@@ -10,7 +10,7 @@ class MainFrame extends JFrame
     public JLabel titleLabel, animatedLabel;
     public JScrollPane cacheScroll, mainMemoryScroll;
     public JButton nextButton, skipButton;
-    public int PLAY_TIME = 2000;
+    public int PLAY_TIME = 1000;
     public long startTime;
     public Main model;
 
@@ -67,6 +67,7 @@ class MainFrame extends JFrame
             cacheBlocks[i].setText(">Empty<");
             cacheBlocks[i].setOpaque(true);
             cacheBlocks[i].setFont(new Font("Arial", Font.BOLD, 16));
+            cacheBlocks[i].setAlignmentX(JLabel.CENTER_ALIGNMENT);
             cachePanel.add(cacheBlocks[i]);
         }
 
@@ -91,6 +92,7 @@ class MainFrame extends JFrame
             mainMemory[i].setText(String.valueOf(model.mainMemory.nArray[i].nNum));
             mainMemory[i].setOpaque(true);
             mainMemory[i].setFont(new Font("Arial", Font.BOLD, 16));
+            mainMemory[i].setAlignmentX(JLabel.CENTER_ALIGNMENT);
             mainMemoryPanel.add(mainMemory[i]);
         }
 
@@ -109,7 +111,7 @@ class MainFrame extends JFrame
         nextButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                replaceCache();
+                replaceCache(false);
 
                 if(model.mainMemory.nCurr == model.mainMemory.nArray.length)
                 {
@@ -126,13 +128,12 @@ class MainFrame extends JFrame
             @Override
             public void actionPerformed(ActionEvent e) {
                 while (model.mainMemory.nCurr < model.mainMemory.nArray.length)
-                    replaceCache();
+                    replaceCache(true);
 
                 nextButton.setEnabled(false);
                 skipButton.setEnabled(false);
             }
         });
-
 
         southPanel.add(nextButton, BorderLayout.WEST);
         southPanel.add(skipButton, BorderLayout.EAST);
@@ -140,7 +141,7 @@ class MainFrame extends JFrame
         this.add(southPanel,BorderLayout.SOUTH);
     }
 
-    public void replaceCache()
+    public void replaceCache(boolean isSkip)
     {
         int num = model.replaceCache();
         cacheBlocks[num].setText(String.valueOf(model.cache.nArray[num]));
@@ -161,8 +162,13 @@ class MainFrame extends JFrame
         if (!(num2 == mainMemory.length))
             mainMemoryScroll.getViewport().setViewPosition(mainMemory[num].getLocation());
 
-        if (!(num2 == mainMemory.length))
+        if (!(num2 == mainMemory.length) && !(isSkip))
+        {
+            skipButton.setEnabled(false);
+            nextButton.setEnabled(false);
             animateLabel(mainMemory[num2], cacheBlocks[num]);
+        }
+
 
         this.revalidate();
         this.repaint();
@@ -174,33 +180,41 @@ class MainFrame extends JFrame
         animatedLabel = new JLabel();
         animatedLabel.setText(destinationLabel.getText());
         animatedLabel.setOpaque(true);
+        animatedLabel.setBackground(Color.CYAN);
         animatedLabel.setFont(new Font("Arial", Font.BOLD, 16));
         animatedLabel.setSize(animatedLabel.getPreferredSize());
+        animatedLabel.setVisible(false);
         centerPanel.add(animatedLabel);
 
         Timer timer = new Timer(50, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                animatedLabel.setVisible(true);
                 animatedLabel.repaint();
                 animatedLabel.revalidate();
+
                 double x1 = startLabel.getLocationOnScreen().getX(), y1 = startLabel.getLocationOnScreen().getY();
                 double x2 = destinationLabel.getLocationOnScreen().getX(), y2 = destinationLabel.getLocationOnScreen().getY();
 
                 long duration = System.currentTimeMillis() - startTime;
-                float progress = (float)duration / (float)PLAY_TIME;
+                float progress = (float) duration / (float) PLAY_TIME;
                 if (progress > 1f) {
                     progress = 1f;
+
+                    skipButton.setEnabled(true);
+                    nextButton.setEnabled(true);
+
                     centerPanel.remove(animatedLabel);
                     centerPanel.repaint();
                     centerPanel.revalidate();
                     ((Timer)(e.getSource())).stop();
                 }
 
-                double x = x1 + (int)Math.round((x2 - x1) * progress);
-                double y = y1 + (int)Math.round((y2 - y1) * progress);
+                double x = x1 + (int) Math.round((x2 - x1) * progress);
+                double y = y1 + (int) Math.round((y2 - y1) * progress);
 
-                x -= centerPanel.getLocation().getX();
-                y -= centerPanel.getLocation().getY();
+                x -= centerPanel.getLocationOnScreen().getX();
+                y -= centerPanel.getLocationOnScreen().getY();
 
                 animatedLabel.setLocation((int) x, (int) y);
             }
