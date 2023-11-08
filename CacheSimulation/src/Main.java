@@ -1,7 +1,9 @@
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
+    // initialize Cache object
     public Cache cache = new Cache();
+    // initialize MainMemory object
     public MainMemory mainMemory;
 
     public static void main(String[] args) {

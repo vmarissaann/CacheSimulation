@@ -35,14 +35,14 @@ class MainFrame extends JFrame
 
         super.setVisible(true);
     }
-
+    //Title in upper screen
     public void initializeNorth()
     {
         northPanel = new JPanel(new BorderLayout());
 
         titleLabel = new JLabel();
         titleLabel.setText("Full Associative + Random Replacement Algorithm");
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 28));
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 20));
         titleLabel.setHorizontalAlignment(JLabel.CENTER);
 
         northPanel.add(titleLabel, BorderLayout.CENTER);
@@ -110,7 +110,7 @@ class MainFrame extends JFrame
             @Override
             public void actionPerformed(ActionEvent e) {
                 replaceCache();
-
+                // disabled if memory count == size of main memory
                 if(model.mainMemory.nCurr == model.mainMemory.nArray.length)
                 {
                     nextButton.setEnabled(false);
@@ -122,6 +122,7 @@ class MainFrame extends JFrame
         skipButton = new JButton();
         skipButton.setText("Skip");
 
+        // iterates through the entire main memory until finished
         skipButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
