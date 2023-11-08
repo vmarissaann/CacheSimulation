@@ -6,10 +6,12 @@ import java.awt.event.ActionListener;
 class MainFrame extends JFrame
 {
     public JLabel[] cacheBlocks, mainMemory;
-    public JPanel northPanel, westPanel, cachePanel, eastPanel, mainMemoryPanel, southPanel;
-    public JLabel titleLabel;
+    public JPanel northPanel, westPanel, cachePanel, eastPanel, mainMemoryPanel, southPanel, centerPanel;
+    public JLabel titleLabel, animatedLabel;
     public JScrollPane cacheScroll, mainMemoryScroll;
     public JButton nextButton, skipButton;
+    public int PLAY_TIME = 2000;
+    public long startTime;
     public Main model;
 
     public MainFrame(Main model) {
@@ -25,6 +27,11 @@ class MainFrame extends JFrame
         initializeWest();
         initializeEast();
         initializeSouth();
+
+        centerPanel = new JPanel();
+        centerPanel.setLayout(null);
+
+        this.add(centerPanel, BorderLayout.CENTER);
 
         super.setVisible(true);
     }
@@ -104,7 +111,7 @@ class MainFrame extends JFrame
             public void actionPerformed(ActionEvent e) {
                 replaceCache();
 
-                if(model.mainMemory.nCurr == model.mainMemory.nArray.length - 1)
+                if(model.mainMemory.nCurr == model.mainMemory.nArray.length)
                 {
                     nextButton.setEnabled(false);
                     skipButton.setEnabled(false);
@@ -128,7 +135,7 @@ class MainFrame extends JFrame
 
 
         southPanel.add(nextButton, BorderLayout.WEST);
-        southPanel.add(nextButton, BorderLayout.EAST);
+        southPanel.add(skipButton, BorderLayout.EAST);
 
         this.add(southPanel,BorderLayout.SOUTH);
     }
@@ -143,16 +150,62 @@ class MainFrame extends JFrame
 
         cacheScroll.getViewport().setViewPosition(cacheBlocks[num].getLocation());
 
-        num = model.mainMemory.nCurr;
-        mainMemory[num].setBackground(Color.YELLOW);
-        if (model.mainMemory.nArray[num - 1].cHit.equals("Hit"))
-            mainMemory[num - 1].setBackground(Color.GREEN);
-        else if (model.mainMemory.nArray[num - 1].cHit.equals("Miss"))
-            mainMemory[num - 1].setBackground(Color.RED);
+        int num2 = model.mainMemory.nCurr;
+        if (!(num2 == mainMemory.length))
+            mainMemory[num2].setBackground(Color.YELLOW);
+        if (model.mainMemory.nArray[num2 - 1].cHit.equals("Hit"))
+            mainMemory[num2 - 1].setBackground(Color.GREEN);
+        else if (model.mainMemory.nArray[num2 - 1].cHit.equals("Miss"))
+            mainMemory[num2 - 1].setBackground(Color.RED);
 
-        mainMemoryScroll.getViewport().setViewPosition(mainMemory[num].getLocation());
+        if (!(num2 == mainMemory.length))
+            mainMemoryScroll.getViewport().setViewPosition(mainMemory[num].getLocation());
+
+        if (!(num2 == mainMemory.length))
+            animateLabel(mainMemory[num2], cacheBlocks[num]);
 
         this.revalidate();
         this.repaint();
+    }
+
+    //https://stackoverflow.com/questions/16577415/jlabel-move-to-coordinate
+    public void animateLabel(JLabel startLabel, JLabel destinationLabel)
+    {
+        animatedLabel = new JLabel();
+        animatedLabel.setText(destinationLabel.getText());
+        animatedLabel.setOpaque(true);
+        animatedLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        animatedLabel.setSize(animatedLabel.getPreferredSize());
+        centerPanel.add(animatedLabel);
+
+        Timer timer = new Timer(50, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                animatedLabel.repaint();
+                animatedLabel.revalidate();
+                double x1 = startLabel.getLocationOnScreen().getX(), y1 = startLabel.getLocationOnScreen().getY();
+                double x2 = destinationLabel.getLocationOnScreen().getX(), y2 = destinationLabel.getLocationOnScreen().getY();
+
+                long duration = System.currentTimeMillis() - startTime;
+                float progress = (float)duration / (float)PLAY_TIME;
+                if (progress > 1f) {
+                    progress = 1f;
+                    centerPanel.remove(animatedLabel);
+                    centerPanel.repaint();
+                    centerPanel.revalidate();
+                    ((Timer)(e.getSource())).stop();
+                }
+
+                double x = x1 + (int)Math.round((x2 - x1) * progress);
+                double y = y1 + (int)Math.round((y2 - y1) * progress);
+
+                x -= centerPanel.getLocation().getX();
+                y -= centerPanel.getLocation().getY();
+
+                animatedLabel.setLocation((int) x, (int) y);
+            }
+        });
+        startTime = System.currentTimeMillis();
+        timer.start();
     }
 }
