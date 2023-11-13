@@ -356,7 +356,7 @@ class MainFrame extends JFrame {
         speedUpButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PLAY_TIME -= 400;
+                PLAY_TIME -= 250;
                 if (PLAY_TIME == 250)
                     speedUpButton.setEnabled(false);
             }
