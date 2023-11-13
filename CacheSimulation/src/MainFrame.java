@@ -6,8 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.InputStream;
 
-class MainFrame extends JFrame
-{
+class MainFrame extends JFrame {
     // Arrays of JLabels to represent the blocks in the cache and main memory
     public BlockLabel[] cacheBlocks, mainMemory;
     // JPanels used
@@ -23,6 +22,8 @@ class MainFrame extends JFrame
     public int PLAY_TIME = 1000;
     // Time for animation
     public long startTime;
+    //dropdown
+    JComboBox comboBox;
     // The model to be used for storing data and using functions
     public Main model;
 
@@ -48,7 +49,7 @@ class MainFrame extends JFrame
         centerPanel = new JPanel();
         centerPanel.setLayout(null);
         centerPanel.setBackground(Color.white);
-        
+
         this.add(centerPanel, BorderLayout.CENTER);
 
         // Set the JFrame to be visible
@@ -60,35 +61,35 @@ class MainFrame extends JFrame
             InputStream is = MainFrame.class.getResourceAsStream("ArchitypeAubettte.ttf");
             Font font = Font.createFont(Font.TRUETYPE_FONT, is);
             labelName.setFont(font.deriveFont(Font.PLAIN, size));
+        } catch (Exception e) {
         }
-        catch(Exception e){}
     }
 
     // Initialize the north panel
     public void initializeNorth() {
         northPanel = new JPanel();
         northPanel.setLayout(new BoxLayout(northPanel, BoxLayout.Y_AXIS));
-    
+
         // Container for title and algorithm labels
         titleContainer = new JPanel();
         titleContainer.setLayout(new BoxLayout(titleContainer, BoxLayout.Y_AXIS));
         titleContainer.setBorder(BorderFactory.createEmptyBorder(5, 0, 5, 0));
         titleContainer.setBackground(Color.white);
-    
+
         // Cache simulator title
         titleLabel = new JLabel();
         titleLabel.setText("CACHE SIMULATOR");
         titleLabel.setForeground(Color.decode("#24231D"));
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         editFont(titleLabel, 22);
-    
+
         // Type of algorithms title
         algorithmLabel = new JLabel();
         algorithmLabel.setText("FULL ASSOCIATIVE RANDOM REPLACEMENT");
         algorithmLabel.setForeground(Color.decode("#C6624F"));
         algorithmLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         editFont(algorithmLabel, 16);
-    
+
         // Container for cache and memory label
         compContainer = new JPanel();
         compContainer.setLayout(new BorderLayout());
@@ -102,29 +103,64 @@ class MainFrame extends JFrame
         cacheLabel.setText("CACHE");
         cacheLabel.setForeground(Color.decode("#24231D"));
         editFont(cacheLabel, 14);
-    
+
         // Memory title
         memoryLabel = new JLabel();
         memoryLabel.setText("MEMORY");
         memoryLabel.setForeground(Color.decode("#24231D"));
         editFont(memoryLabel, 14);
-    
+
         // Add labels to the containers
         titleContainer.add(titleLabel);
         titleContainer.add(algorithmLabel);
         compContainer.add(cacheLabel, BorderLayout.WEST);
         compContainer.add(Box.createHorizontalGlue());
         compContainer.add(memoryLabel, BorderLayout.EAST);
-    
+
+        //dropdown
+        String[] testCases = {"Sequential Sequence", "Random Sequence", "Mid-repeat blocks"};
+        comboBox = new JComboBox(testCases);
+        titleContainer.add(comboBox);
+
+
         // Add the containers to the NORTH region of northPanel
         northPanel.add(titleContainer);
         northPanel.add(compContainer);
-    
+
         // Set the maximum width of titleContainer to be the same as its parent container
         titleContainer.setMaximumSize(new Dimension(Integer.MAX_VALUE, titleContainer.getPreferredSize().height));
         northPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, northPanel.getPreferredSize().height));
-    
+
         this.add(northPanel, BorderLayout.NORTH);
+        comboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(e.getSource()==comboBox){
+                    //System.out.println(comboBox.getSelectedItem());
+                    int index=comboBox.getSelectedIndex();
+                    System.out.println(index);
+                    if(index==0){
+//                        expln.setText("<html> <h3> Sequential Sequence </h3> <br>" +
+//                                "up to 2(32) cache block. Repeat the sequence four times. <br> Example: 0,1,2,3,...,63 {4x}</html> ");
+                      //Condition for setting sequence
+                        int[] nInput = new int[]{};
+                    }
+                    else if(index==1){
+//                        expln.setText("<html> <br> <h3> Random Sequence </h3> <br>" +
+//                                "containing 4(32) blocks </html>");
+                        //Condition for setting sequence
+                    }
+                    else{
+//                        expln.setText("<html> <h3> Mid-repeat blocks</h3> <br>" +
+//                                " Start at block 0, repeat the sequence in the middle two times up to n-1 blocks, after\n" +
+//                                "which continue up to 2n. Then, repeat the sequence four times. <br> Example: if n=8," +
+//                                "<br> sequence=0, 1,2,3,4,5,6,1,2,3,4,5,6, 7,8,9,10,11,12,13,14,15 {4x} </html>");
+                        //Condition for setting sequence
+                    }
+
+                }
+            }
+        });
     }
     
     
