@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
@@ -34,8 +37,6 @@ public class Main {
             }
         }
 
-        // wow
-        //asdfklasdf;kljas;lfkjasdf
         // If it is not found then check if there are still empty slots
         if (!contains)
             for(int i = 0; i < cache.nBlock; i++)
@@ -66,6 +67,54 @@ public class Main {
         mainMemory.nCurr++;
         // Return the cache location
         return nReplace;
+    }
+
+    public void outputTextFile() {
+        int missCount = mainMemory.missCount();
+        int hitCount = mainMemory.hitCount();
+        double avgAccessTime = averageAccessTime();
+        double totalAccessTime = totalAccessTime();
+
+        try {
+
+            PrintStream fileStream = new PrintStream(new File("output.txt"));
+            System.setOut(fileStream);
+
+            System.out.println("Memory Access Count: " + mainMemory.nArray.length);
+            System.out.println("Cache Hit Count: " + hitCount);
+            System.out.println("Cache Miss Count: " + missCount);
+            System.out.println("Cache Hit Rate: " + hitCount + "/" + mainMemory.nArray.length);
+            System.out.println("Cache Miss Rate: " + missCount + "/" + mainMemory.nArray.length);
+            System.out.println("Average Memory Access Time: " + avgAccessTime + "ns");
+            System.out.println("Total Memory Access Time: " + totalAccessTime + "ns");
+            System.out.println();
+            System.out.println("Cache Contents: ");
+            for (int i = 0; i < cache.nBlock; i++) {
+                System.out.println("Block " + i + ":" + cache.nArray[i]);
+            }
+            System.out.println();
+
+
+            fileStream.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public double averageAccessTime (){
+        double missCount = mainMemory.missCount();
+        double hitCount = mainMemory.hitCount();
+        double total = mainMemory.nArray.length;
+
+        return hitCount/total + (1 + cache.nCacheLine*10 + 1)*missCount/total;
+    }
+
+    public double totalAccessTime (){
+        double missCount = mainMemory.missCount();
+        double hitCount = mainMemory.hitCount();
+        double total = mainMemory.nArray.length;
+
+        return hitCount + (1 + cache.nCacheLine*10 + 1)*missCount;
     }
 
 }

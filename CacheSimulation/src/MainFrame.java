@@ -150,6 +150,7 @@ class MainFrame extends JFrame
                         {
                             skipButton.setEnabled(false);
                             ((Timer)(e.getSource())).stop();
+                            model.outputTextFile();
                         }
                     }
                 });
@@ -173,6 +174,7 @@ class MainFrame extends JFrame
                 playButton.setEnabled(false);
                 skipButton.setEnabled(false);
                 speedUpButton.setEnabled(false);
+                model.outputTextFile();
             }
         });
 

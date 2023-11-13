@@ -11,6 +11,23 @@ public class MainMemory {
             //  equates to a Block element by creating a Block object
             this.nArray[i] = new Block(nInput[i]);
     }
+
+    public int hitCount(){
+        int counter = 0;
+        for(int i = 0; i < nArray.length; i++){
+            if(this.nArray[i].cHit == "Hit")
+                counter++;
+        }
+        return counter;
+    }
+    public int missCount(){
+        int counter = 0;
+        for(int i = 0; i < nArray.length; i++){
+            if(this.nArray[i].cHit == "Miss")
+                counter++;
+        }
+        return counter;
+    }
 }
 class Block
 {
