@@ -207,9 +207,10 @@ class MainFrame extends JFrame
         int num2 = model.mainMemory.nCurr;
 
         // Change the current scroll position to the second to the latest cache block
-        if (num > 1)
-            if (num % 4 == 0)
-                cacheScroll.getViewport().setViewPosition(cacheBlocks[num - 1].getLocation());
+        if (num >= model.cache.nBlock / 2)
+            cacheScroll.getViewport().setViewPosition(cacheBlocks[num - model.cache.nBlock / 2].getLocation());
+        else
+            cacheScroll.getViewport().setViewPosition(cacheBlocks[0].getLocation());
 
         // If it is not yet at the end then change the current scroll position to the latest main memory block
         if (!(num2 == mainMemory.length) && num2 != 1)
