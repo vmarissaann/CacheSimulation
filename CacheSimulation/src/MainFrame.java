@@ -1,16 +1,19 @@
 import javax.swing.*;
+import javax.swing.border.Border;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.InputStream;
 
 class MainFrame extends JFrame
 {
     // Arrays of JLabels to represent the blocks in the cache and main memory
     public BlockLabel[] cacheBlocks, mainMemory;
     // JPanels used
-    public JPanel northPanel, westPanel, cachePanel, eastPanel, mainMemoryPanel, southPanel, centerPanel;
+    public JPanel compContainer, titleContainer, northPanel, westPanel, cachePanel, eastPanel, mainMemoryPanel, southPanel, centerPanel;
     // JLabels used
-    public JLabel titleLabel;
+    public JLabel titleLabel, algorithmLabel, cacheLabel, memoryLabel;
     public BlockLabel animatedLabel;
     // JScrollPane for scrolling feature
     public JScrollPane cacheScroll, mainMemoryScroll;
@@ -27,7 +30,7 @@ class MainFrame extends JFrame
     public MainFrame(Main model) {
         // Placing usual settings for the JFrame
         super("Main");
-        super.setSize(600, 800);
+        super.setSize(550, 1000);
         super.setResizable(false);
         super.setLayout(new BorderLayout());
         super.setDefaultCloseOperation(super.EXIT_ON_CLOSE);
@@ -43,6 +46,7 @@ class MainFrame extends JFrame
 
         // Placing a null panel for viewing the JLabel moving around
         centerPanel = new JPanel();
+        centerPanel.setBackground(Color.white);
         centerPanel.setLayout(null);
 
         this.add(centerPanel, BorderLayout.CENTER);
@@ -51,22 +55,79 @@ class MainFrame extends JFrame
         super.setVisible(true);
     }
 
-    // Initialize the north panel
-    public void initializeNorth()
-    {
-        northPanel = new JPanel(new BorderLayout());
-
-        // Placing the type of algorithms used for the title
-        titleLabel = new JLabel();
-        titleLabel.setText("Full Associative + Random Replacement Algorithm");
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 28));
-        titleLabel.setHorizontalAlignment(JLabel.CENTER);
-
-        northPanel.add(titleLabel, BorderLayout.CENTER);
-
-        this.add(northPanel, BorderLayout.NORTH);
+    public void editFont(JLabel labelName, int size) {
+        try {
+            InputStream is = MainFrame.class.getResourceAsStream("ArchitypeAubettte.ttf");
+            Font font = Font.createFont(Font.TRUETYPE_FONT, is);
+            labelName.setFont(font.deriveFont(Font.PLAIN, size));
+        }
+        catch(Exception e){}
     }
 
+    // Initialize the north panel
+    public void initializeNorth() {
+        northPanel = new JPanel();
+        northPanel.setLayout(new BoxLayout(northPanel, BoxLayout.Y_AXIS));
+    
+        // Container for title and algorithm labels
+        titleContainer = new JPanel();
+        titleContainer.setLayout(new BoxLayout(titleContainer, BoxLayout.Y_AXIS));
+        titleContainer.setBorder(BorderFactory.createEmptyBorder(5, 0, 5, 0));
+        titleContainer.setBackground(Color.white);
+    
+        // Cache simulator title
+        titleLabel = new JLabel();
+        titleLabel.setText("CACHE SIMULATOR");
+        titleLabel.setForeground(Color.decode("#24231D"));
+        titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        editFont(titleLabel, 32);
+    
+        // Type of algorithms title
+        algorithmLabel = new JLabel();
+        algorithmLabel.setText("FULL ASSOCIATIVE RANDOM REPLACEMENT");
+        algorithmLabel.setForeground(Color.decode("#C6624F"));
+        algorithmLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        editFont(algorithmLabel, 26);
+    
+        // Container for cache and memory label
+        compContainer = new JPanel();
+        compContainer.setLayout(new BorderLayout());
+        compContainer.setBackground(Color.white);
+        Border emptyBorderLR = BorderFactory.createEmptyBorder(0, 22, 0, 23);
+        Border matteBorderTB = BorderFactory.createMatteBorder(2, 0, 2, 0, Color.decode("#24231D"));
+        compContainer.setBorder(BorderFactory.createCompoundBorder(matteBorderTB, emptyBorderLR));
+
+        // Cache title
+        cacheLabel = new JLabel();
+        cacheLabel.setText("CACHE");
+        cacheLabel.setForeground(Color.decode("#24231D"));
+        editFont(cacheLabel, 24);
+    
+        // Memory title
+        memoryLabel = new JLabel();
+        memoryLabel.setText("MEMORY");
+        memoryLabel.setForeground(Color.decode("#24231D"));
+        editFont(memoryLabel, 24);
+    
+        // Add labels to the containers
+        titleContainer.add(titleLabel);
+        titleContainer.add(algorithmLabel);
+        compContainer.add(cacheLabel, BorderLayout.WEST);
+        compContainer.add(Box.createHorizontalGlue());
+        compContainer.add(memoryLabel, BorderLayout.EAST);
+    
+        // Add the containers to the NORTH region of northPanel
+        northPanel.add(titleContainer);
+        northPanel.add(compContainer);
+    
+        // Set the maximum width of titleContainer to be the same as its parent container
+        titleContainer.setMaximumSize(new Dimension(Integer.MAX_VALUE, titleContainer.getPreferredSize().height));
+        northPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, northPanel.getPreferredSize().height));
+    
+        this.add(northPanel, BorderLayout.NORTH);
+    }
+    
+    
     // Initialize the west panel
     public void initializeWest()
     {
@@ -77,6 +138,7 @@ class MainFrame extends JFrame
         cachePanel.setLayout(new BoxLayout(cachePanel, BoxLayout.Y_AXIS));
         cacheScroll = new JScrollPane(cachePanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         cacheScroll.getVerticalScrollBar().setUnitIncrement(16);
+        cacheScroll.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
         // Initializing the JLabels signifying the cache blocks
         cacheBlocks = new BlockLabel[model.cache.nBlock];
@@ -102,6 +164,7 @@ class MainFrame extends JFrame
         mainMemoryPanel.setLayout(new BoxLayout(mainMemoryPanel, BoxLayout.Y_AXIS));
         mainMemoryScroll = new JScrollPane(mainMemoryPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         mainMemoryScroll.getVerticalScrollBar().setUnitIncrement(16);
+        mainMemoryScroll.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
 
         // Initializing the JLabels to signify the blocks to be transferred in the main memory
         mainMemory = new BlockLabel[model.mainMemory.nArray.length];
@@ -120,6 +183,7 @@ class MainFrame extends JFrame
     public void initializeSouth()
     {
         southPanel = new JPanel(new FlowLayout());
+        southPanel.setBorder(BorderFactory.createEmptyBorder(5, 0, 5, 0));
 
         // Add a play button
         playButton = new JButton();
@@ -184,7 +248,7 @@ class MainFrame extends JFrame
         speedUpButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                PLAY_TIME -= 250;
+                PLAY_TIME -= 400;
                 if (PLAY_TIME == 250)
                     speedUpButton.setEnabled(false);
             }
@@ -219,24 +283,23 @@ class MainFrame extends JFrame
         // Change all the background of the blocks
         for (int i = 0; i < cacheBlocks.length; i++)
         {
-            cacheBlocks[i].color = "Silver";
+            cacheBlocks[i].hexColor = "#EFE9F4";
             cacheBlocks[i].update();
         }
 
         // Highlight the block from the main memory moved or found in the cache
-        cacheBlocks[num].color = "Yellow";
-
+        cacheBlocks[num].hexColor = "#FFE68F";
         cacheBlocks[num].update();
 
         // If it is not beyond the last main memory then highlight it yellow
         if (!(num2 == mainMemory.length))
-            mainMemory[num2].color = "Yellow";
+            mainMemory[num2].hexColor = "#FFE68F";
         // If the last one is a hit then highlight it green
         if (model.mainMemory.nArray[num2 - 1].cHit.equals("Hit"))
-            mainMemory[num2 - 1].color = "Lime";
+            mainMemory[num2 - 1].hexColor = "#3CA064";
         // If the last one is a miss then highlight it red
         else if (model.mainMemory.nArray[num2 - 1].cHit.equals("Miss"))
-            mainMemory[num2 - 1].color = "Red";
+            mainMemory[num2 - 1].hexColor = "#C6624F";
 
         if (num2 != model.mainMemory.nArray.length)
             mainMemory[num2].update();
@@ -264,7 +327,7 @@ class MainFrame extends JFrame
     {
         // Create the animated label
         animatedLabel = new BlockLabel(destinationLabel.number);
-        animatedLabel.color = "Aqua";
+        animatedLabel.hexColor = "#1FA1D1";
         animatedLabel.update();
         animatedLabel.setSize(animatedLabel.getPreferredSize());
 
@@ -288,7 +351,6 @@ class MainFrame extends JFrame
 
                 double offsetX = centerPanel.getLocationOnScreen().getX();
                 double offsetY = centerPanel.getLocationOnScreen().getY();
-
 
                 // Get the time and progress
                 long duration = System.currentTimeMillis() - startTime;
@@ -326,9 +388,10 @@ class MainFrame extends JFrame
         timer.start();
     }
 }
+
 class BlockLabel extends JLabel {
     Integer number;
-    String color = "Silver";
+    String hexColor = "#EFE9F4";
 
     public BlockLabel(Integer number)
     {
@@ -340,8 +403,8 @@ class BlockLabel extends JLabel {
     public void update()
     {
         if (this.number == null)
-            super.setText("<html><p style=\"font-size: 12px; font-weight: bold; background-color:" + this.color + "; border: 1px; border-radius: 2px; border-style: solid; border-color: black; padding: 2px 8px; margin: 2px; text-shadow: 1px;\">Empty</p></html>");
+            super.setText("<html><p style=\"text-align: center; font-size: 12px; background-color:" + this.hexColor + "; border: 1px; border-style: solid; border-color: black; width: 85px; margin-top: 2px; margin-left: 2px; padding: 2px 8px;\">&nbsp;</p></html>");
         else
-            super.setText("<html><p style=\"font-size: 12px; font-weight: bold; background-color:" + this.color + "; border: 1px; border-radius: 2px; border-style: solid; border-color: black;  padding: 2px 8px; margin: 2px; text-shadow: 1px;\">"+ this.number +"</p></html>");
+            super.setText("<html><p style=\"text-align: center; font-size: 12px; background-color:" + this.hexColor + "; border: 1px; border-style: solid; border-color: black; width: 85px; margin-top: 2px; margin-left: 2px; padding: 2px 8px;\">"+ this.number +"</p></html>");
     }
 }
