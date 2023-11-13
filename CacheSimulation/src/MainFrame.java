@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Random;
 
 class MainFrame extends JFrame {
     // Arrays of JLabels to represent the blocks in the cache and main memory
@@ -25,6 +26,12 @@ class MainFrame extends JFrame {
     public long startTime;
     //dropdown
     public JComboBox comboBox;
+    // submit button
+    public JButton submit;
+    //input for main memory
+    public TextField textMainMemory;
+    // cache block sequence
+    public ArrayList<Integer> sequence;
     // The model to be used for storing data and using functions
     public Main model;
 
@@ -122,6 +129,15 @@ class MainFrame extends JFrame {
         String[] testCases = {"Sequential Sequence", "Random Sequence", "Mid-repeat blocks"};
         comboBox = new JComboBox(testCases);
         titleContainer.add(comboBox);
+        // text field for main memory blocks
+        textMainMemory = new TextField();
+        titleContainer.add(textMainMemory);
+        // submit button for text field for main memory blocks
+        submit = new JButton("submit");
+        titleContainer.add(submit);
+        //setting visibility to false
+        textMainMemory.setVisible(false);
+        submit.setVisible(false);
 
 
         // Add the containers to the NORTH region of northPanel
@@ -144,7 +160,7 @@ class MainFrame extends JFrame {
                     System.out.println(index);
                     if(index==0){
                       //Condition for setting sequence
-                        ArrayList<Integer> sequence = new ArrayList<Integer>();
+                         sequence = new ArrayList<Integer>();
                         for (int i = 0; i < 64; i++) {
                             sequence.add(i);
                             if(i==63 && count !=4){
@@ -156,12 +172,34 @@ class MainFrame extends JFrame {
                         //System.out.println(sequence);
                     }
                     else if(index==1){
-                        ArrayList<Integer> sequence = new ArrayList<Integer>();
+                        textMainMemory.setVisible(true);
+                        submit.setVisible(true);
+                        submit.addActionListener(new ActionListener() {
+                            @Override
+                            public void actionPerformed(ActionEvent e) {
+                                String s = e.getActionCommand();
+                                if (s.equals("submit")) {
+                                    //for debugging
+                                    //System.out.println(textMainMemory.getText());
+                                    Random rand = new Random();
+                                    sequence = new ArrayList<Integer>();
+                                    int countMainMemory = Integer.parseInt(textMainMemory.getText());
+                                    int int_random=0;
+                                    for (int i=0; i<32*4;i++){
+                                        int_random = rand.nextInt(countMainMemory);
+                                        sequence.add(int_random);
+                                    }
+                                    //for debugging
+//                                    System.out.println(sequence);
+//                                    System.out.println();
+//                                    System.out.println(sequence.size());
+                                }
+                            }
+                        });
 
-                        //Condition for setting sequence
                     }
                     else {
-                        ArrayList<Integer> sequence = new ArrayList<Integer>();
+                        sequence = new ArrayList<Integer>();
                         for (int repeat = 0; repeat < 4; repeat++) {
                             // First part: 0 to n-1
                             for (int i = 0; i < 32 - 1; i++) {
@@ -178,11 +216,14 @@ class MainFrame extends JFrame {
                                 sequence.add(i);
                             }
                         }
-                        System.out.println(sequence);
+                        //for debugging
+                        //System.out.println(sequence);
                     }
                 }
             }
         });
+
+
     }
     
     
