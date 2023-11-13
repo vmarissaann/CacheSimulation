@@ -1,5 +1,6 @@
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -14,7 +15,8 @@ class MainFrame extends JFrame {
     // JPanels used
     public JPanel compContainer, titleContainer, northPanel, westPanel, cachePanel, eastPanel, mainMemoryPanel, southPanel, centerPanel;
     // JLabels used
-    public JLabel sample, titleLabel, algorithmLabel, cacheLabel, memoryLabel;
+    public JLabel endLabel, titleLabel, algorithmLabel, cacheLabel, memoryLabel;
+    // BlockLabel for aanimattion
     public BlockLabel animatedLabel;
     // JScrollPane for scrolling feature
     public JScrollPane cacheScroll, mainMemoryScroll;
@@ -34,12 +36,13 @@ class MainFrame extends JFrame {
     public ArrayList<Integer> sequence;
     // The model to be used for storing data and using functions
     public Main model;
+    public MainMemory memory;
 
     // Constructor
     public MainFrame(Main model) {
         // Placing usual settings for the JFrame
         super("Main");
-        super.setSize(600, 900);
+        super.setSize(600, 800);
         super.setResizable(false);
         super.setLayout(new BorderLayout());
         super.setDefaultCloseOperation(super.EXIT_ON_CLOSE);
@@ -152,7 +155,8 @@ class MainFrame extends JFrame {
         comboBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                textMainMemory.setVisible(false);
+                submit.setVisible(false);
                 int count=0;
                 if(e.getSource()==comboBox){
                     //System.out.println(comboBox.getSelectedItem());
@@ -199,6 +203,8 @@ class MainFrame extends JFrame {
 
                     }
                     else {
+                        textMainMemory.setVisible(false);
+                        submit.setVisible(false);
                         sequence = new ArrayList<Integer>();
                         for (int repeat = 0; repeat < 4; repeat++) {
                             // First part: 0 to n-1
@@ -314,6 +320,7 @@ class MainFrame extends JFrame {
                             skipButton.setEnabled(false);
                             ((Timer)(e.getSource())).stop();
                             model.outputTextFile();
+                            displayOutput();
                         }
                     }
                 });
@@ -337,19 +344,9 @@ class MainFrame extends JFrame {
                 playButton.setEnabled(false);
                 skipButton.setEnabled(false);
                 speedUpButton.setEnabled(false);
+
                 model.outputTextFile();
-
-                centerPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-
-                JLabel sampleLabel = new JLabel();
-                sampleLabel.setText("SAMPLE");
-                sampleLabel.setForeground(Color.decode("#24231D"));
-                sampleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-                editFont(sampleLabel, 24);
-                centerPanel.add(sampleLabel);
-
-                MainFrame.this.revalidate();
-                MainFrame.this.repaint();
+                displayOutput();
             }
         });
 
@@ -370,6 +367,68 @@ class MainFrame extends JFrame {
         southPanel.add(skipButton);
 
         this.add(southPanel,BorderLayout.SOUTH);
+    }
+
+    public void resultLabel(JPanel panel, String text) {
+        JLabel label = new JLabel();
+        label.setText(text);
+        label.setFont(new Font("Arial", Font.BOLD, 14));
+        label.setForeground(Color.decode("#24231D"));
+        label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        label.setBorder(new EmptyBorder(0, 0, 5, 0));
+        panel.add(label);
+    }
+
+    public void resultAnswer(JPanel panel, String text) {
+        JLabel label = new JLabel();
+        label.setText(text);
+        label.setFont(new Font("Arial", Font.PLAIN, 14));
+        label.setForeground(Color.decode("#24231D"));
+        label.setAlignmentX(Component.CENTER_ALIGNMENT);
+        label.setBorder(new EmptyBorder(0, 0, 10, 0));
+        panel.add(label);
+    }
+
+    public void displayOutput()
+    {
+        int memoryAccessCount = model.memoryAccessCount();
+        int missCount = model.missCnt();
+        int hitCount = model.hitCnt();
+        double avgAccessTime = model.averageAccessTime();
+        double totalAccessTime = model.totalAccessTime();
+        
+        // Set center panel so it is not null
+        centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
+
+        // Display title
+        endLabel = new JLabel();
+        endLabel.setText("RESULTS");
+        endLabel.setForeground(Color.decode("#24231D"));
+        endLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        endLabel.setBorder(new EmptyBorder(45, 0, 15, 0));
+        editFont(endLabel, 32);
+
+        // Add labels into panel
+        centerPanel.add(endLabel);
+
+        // Display results
+        resultLabel(centerPanel, "Memory Access Count");
+        resultAnswer(centerPanel, "" + memoryAccessCount);
+        resultLabel(centerPanel, "Cache Hit Count");
+        resultAnswer(centerPanel, "" + hitCount);
+        resultLabel(centerPanel, "Cache Miss Count");
+        resultAnswer(centerPanel, "" + missCount);
+        resultLabel(centerPanel, "Cache Hit Rate");
+        resultAnswer(centerPanel,  hitCount + "/" + memoryAccessCount);
+        resultLabel(centerPanel, "Cache Miss Rate");
+        resultAnswer(centerPanel, missCount + "/" + memoryAccessCount);
+        resultLabel(centerPanel, "Average Memory Access Time");
+        resultAnswer(centerPanel, avgAccessTime + "ns");
+        resultLabel(centerPanel, "Total Memory Access Time");
+        resultAnswer(centerPanel, totalAccessTime + "ns");
+
+        MainFrame.this.revalidate();
+        MainFrame.this.repaint();
     }
 
     // Function that transfers the blocks from main memory

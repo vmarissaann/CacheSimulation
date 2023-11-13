@@ -70,8 +70,9 @@ public class Main {
     }
 
     public void outputTextFile() {
-        int missCount = mainMemory.missCount();
-        int hitCount = mainMemory.hitCount();
+        int memoryAccessCount = memoryAccessCount();
+        int missCount = missCnt();
+        int hitCount = hitCnt();
         double avgAccessTime = averageAccessTime();
         double totalAccessTime = totalAccessTime();
 
@@ -80,11 +81,11 @@ public class Main {
             PrintStream fileStream = new PrintStream(new File("output.txt"));
             System.setOut(fileStream);
 
-            System.out.println("Memory Access Count: " + mainMemory.nArray.length);
+            System.out.println("Memory Access Count: " + memoryAccessCount);
             System.out.println("Cache Hit Count: " + hitCount);
             System.out.println("Cache Miss Count: " + missCount);
-            System.out.println("Cache Hit Rate: " + hitCount + "/" + mainMemory.nArray.length);
-            System.out.println("Cache Miss Rate: " + missCount + "/" + mainMemory.nArray.length);
+            System.out.println("Cache Hit Rate: " + hitCount + "/" + memoryAccessCount);
+            System.out.println("Cache Miss Rate: " + missCount + "/" + memoryAccessCount);
             System.out.println("Average Memory Access Time: " + avgAccessTime + "ns");
             System.out.println("Total Memory Access Time: " + totalAccessTime + "ns");
             System.out.println();
@@ -101,20 +102,34 @@ public class Main {
         }
     }
 
-    public double averageAccessTime (){
+    public int memoryAccessCount() {
+        return mainMemory.nArray.length;
+    }
+
+    public int hitCnt() {
+        return mainMemory.hitCount();
+    }
+
+    public int missCnt() {
+        return mainMemory.missCount();
+    }
+
+    public double averageAccessTime() {
         double missCount = mainMemory.missCount();
         double hitCount = mainMemory.hitCount();
         double total = mainMemory.nArray.length;
-
-        return hitCount/total + (1 + cache.nCacheLine*10 + 1)*missCount/total;
+    
+        double result = hitCount / total + (1 + cache.nCacheLine * 10 + 1) * missCount / total;
+    
+        return Double.parseDouble(String.format("%.4f", result));
     }
 
     public double totalAccessTime (){
-        double missCount = mainMemory.missCount();
-        double hitCount = mainMemory.hitCount();
-        double total = mainMemory.nArray.length;
+        double missCount = missCnt();
+        double hitCount = hitCnt();
 
         return hitCount + (1 + cache.nCacheLine*10 + 1)*missCount;
     }
+
 
 }
