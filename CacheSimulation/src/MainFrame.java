@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 class MainFrame extends JFrame {
     // Arrays of JLabels to represent the blocks in the cache and main memory
@@ -23,7 +24,7 @@ class MainFrame extends JFrame {
     // Time for animation
     public long startTime;
     //dropdown
-    JComboBox comboBox;
+    public JComboBox comboBox;
     // The model to be used for storing data and using functions
     public Main model;
 
@@ -135,29 +136,50 @@ class MainFrame extends JFrame {
         comboBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                int count=0;
                 if(e.getSource()==comboBox){
                     //System.out.println(comboBox.getSelectedItem());
                     int index=comboBox.getSelectedIndex();
                     System.out.println(index);
                     if(index==0){
-//                        expln.setText("<html> <h3> Sequential Sequence </h3> <br>" +
-//                                "up to 2(32) cache block. Repeat the sequence four times. <br> Example: 0,1,2,3,...,63 {4x}</html> ");
                       //Condition for setting sequence
-                        int[] nInput = new int[]{};
+                        ArrayList<Integer> sequence = new ArrayList<Integer>();
+                        for (int i = 0; i < 64; i++) {
+                            sequence.add(i);
+                            if(i==63 && count !=4){
+                                i=-1;
+                                count++;
+                            }
+                        }
+                        //for debugging
+                        //System.out.println(sequence);
                     }
                     else if(index==1){
-//                        expln.setText("<html> <br> <h3> Random Sequence </h3> <br>" +
-//                                "containing 4(32) blocks </html>");
-                        //Condition for setting sequence
-                    }
-                    else{
-//                        expln.setText("<html> <h3> Mid-repeat blocks</h3> <br>" +
-//                                " Start at block 0, repeat the sequence in the middle two times up to n-1 blocks, after\n" +
-//                                "which continue up to 2n. Then, repeat the sequence four times. <br> Example: if n=8," +
-//                                "<br> sequence=0, 1,2,3,4,5,6,1,2,3,4,5,6, 7,8,9,10,11,12,13,14,15 {4x} </html>");
-                        //Condition for setting sequence
-                    }
+                        ArrayList<Integer> sequence = new ArrayList<Integer>();
 
+                        //Condition for setting sequence
+                    }
+                    else {
+                        ArrayList<Integer> sequence = new ArrayList<Integer>();
+                        for (int repeat = 0; repeat < 4; repeat++) {
+                            // First part: 0 to n-1
+                            for (int i = 0; i < 32 - 1; i++) {
+                                sequence.add(i);
+                            }
+
+                            // Second part: 1 to n-1
+                            for (int i = 1; i < 32 - 1; i++) {
+                                sequence.add(i);
+                            }
+
+                            // Third part: n to 2n-1
+                            for (int i = 31; i <  64; i++) {
+                                sequence.add(i);
+                            }
+                        }
+                        System.out.println(sequence);
+                    }
                 }
             }
         });
