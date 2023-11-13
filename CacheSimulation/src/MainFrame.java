@@ -13,7 +13,7 @@ class MainFrame extends JFrame
     // JPanels used
     public JPanel compContainer, titleContainer, northPanel, westPanel, cachePanel, eastPanel, mainMemoryPanel, southPanel, centerPanel;
     // JLabels used
-    public JLabel titleLabel, algorithmLabel, cacheLabel, memoryLabel;
+    public JLabel sample, titleLabel, algorithmLabel, cacheLabel, memoryLabel;
     public BlockLabel animatedLabel;
     // JScrollPane for scrolling feature
     public JScrollPane cacheScroll, mainMemoryScroll;
@@ -30,7 +30,7 @@ class MainFrame extends JFrame
     public MainFrame(Main model) {
         // Placing usual settings for the JFrame
         super("Main");
-        super.setSize(550, 1000);
+        super.setSize(600, 900);
         super.setResizable(false);
         super.setLayout(new BorderLayout());
         super.setDefaultCloseOperation(super.EXIT_ON_CLOSE);
@@ -46,9 +46,9 @@ class MainFrame extends JFrame
 
         // Placing a null panel for viewing the JLabel moving around
         centerPanel = new JPanel();
-        centerPanel.setBackground(Color.white);
         centerPanel.setLayout(null);
-
+        centerPanel.setBackground(Color.white);
+        
         this.add(centerPanel, BorderLayout.CENTER);
 
         // Set the JFrame to be visible
@@ -80,20 +80,20 @@ class MainFrame extends JFrame
         titleLabel.setText("CACHE SIMULATOR");
         titleLabel.setForeground(Color.decode("#24231D"));
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        editFont(titleLabel, 32);
+        editFont(titleLabel, 22);
     
         // Type of algorithms title
         algorithmLabel = new JLabel();
         algorithmLabel.setText("FULL ASSOCIATIVE RANDOM REPLACEMENT");
         algorithmLabel.setForeground(Color.decode("#C6624F"));
         algorithmLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        editFont(algorithmLabel, 26);
+        editFont(algorithmLabel, 16);
     
         // Container for cache and memory label
         compContainer = new JPanel();
         compContainer.setLayout(new BorderLayout());
         compContainer.setBackground(Color.white);
-        Border emptyBorderLR = BorderFactory.createEmptyBorder(0, 22, 0, 23);
+        Border emptyBorderLR = BorderFactory.createEmptyBorder(0, 30, 0, 40);
         Border matteBorderTB = BorderFactory.createMatteBorder(2, 0, 2, 0, Color.decode("#24231D"));
         compContainer.setBorder(BorderFactory.createCompoundBorder(matteBorderTB, emptyBorderLR));
 
@@ -101,13 +101,13 @@ class MainFrame extends JFrame
         cacheLabel = new JLabel();
         cacheLabel.setText("CACHE");
         cacheLabel.setForeground(Color.decode("#24231D"));
-        editFont(cacheLabel, 24);
+        editFont(cacheLabel, 14);
     
         // Memory title
         memoryLabel = new JLabel();
         memoryLabel.setText("MEMORY");
         memoryLabel.setForeground(Color.decode("#24231D"));
-        editFont(memoryLabel, 24);
+        editFont(memoryLabel, 14);
     
         // Add labels to the containers
         titleContainer.add(titleLabel);
@@ -239,6 +239,18 @@ class MainFrame extends JFrame
                 skipButton.setEnabled(false);
                 speedUpButton.setEnabled(false);
                 model.outputTextFile();
+
+                centerPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+
+                JLabel sampleLabel = new JLabel();
+                sampleLabel.setText("SAMPLE");
+                sampleLabel.setForeground(Color.decode("#24231D"));
+                sampleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+                editFont(sampleLabel, 24);
+                centerPanel.add(sampleLabel);
+
+                MainFrame.this.revalidate();
+                MainFrame.this.repaint();
             }
         });
 
@@ -403,8 +415,8 @@ class BlockLabel extends JLabel {
     public void update()
     {
         if (this.number == null)
-            super.setText("<html><p style=\"text-align: center; font-size: 12px; background-color:" + this.hexColor + "; border: 1px; border-style: solid; border-color: black; width: 85px; margin-top: 2px; margin-left: 2px; padding: 2px 8px;\">&nbsp;</p></html>");
+            super.setText("<html><p style=\"text-align: center; font-size: 10px; background-color:" + this.hexColor + "; border: 1px; border-style: solid; border-color: black; width: 85px; margin-top: 2px; margin-left: 2px; padding: 4px 8px;\">&nbsp;</p></html>");
         else
-            super.setText("<html><p style=\"text-align: center; font-size: 12px; background-color:" + this.hexColor + "; border: 1px; border-style: solid; border-color: black; width: 85px; margin-top: 2px; margin-left: 2px; padding: 2px 8px;\">"+ this.number +"</p></html>");
+            super.setText("<html><p style=\"text-align: center; font-size: 10px; background-color:" + this.hexColor + "; border: 1px; border-style: solid; border-color: black; width: 85px; margin-top: 2px; margin-left: 2px; padding: 4px 8px;\">"+ this.number +"</p></html>");
     }
 }
