@@ -1,6 +1,10 @@
+import javax.swing.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
@@ -9,10 +13,78 @@ public class Main {
 
     public static void main(String[] args) {
         // Random sample input
-        int nInput[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 50, 30, 20, 10, 11, 1, 2, 67, 4, 100, 23, 205, 34, 512, 12, 56, 53, 2, 1, 16, 73, 267, 282, 124, 132, 23, 15};
+        Integer nInput[];
+        int nInput2[];
         // Initialize all the variables
+
+        // Set up an array of button options
+        Object[] options = {"Sequential", "Random", "Mid-Repeat"};
+
+        // Show the option dialog
+        int choice = JOptionPane.showOptionDialog(
+                null,                       // Parent component (null for default)
+                "Please select an input from below.",       // Message to be displayed
+                "Input",   // Dialog title
+                JOptionPane.DEFAULT_OPTION, // Option type (default)
+                JOptionPane.PLAIN_MESSAGE,  // Message type (plain)
+                null,                       // Icon (null for default)
+                options,                    // Options (array of buttons)
+                options[0]);                // Default option
+
+        // The choice variable now contains the index of the selected option
+        // Index starts from 0, so we add 1 to get values from 1 to 3.
+        int result = choice;
+
+        ArrayList sequence = new ArrayList<Integer>();
+
+        int count = 0;
+        if (choice == 0) {
+            //Condition for setting sequence
+            for (int i = 0; i < 64; i++) {
+                sequence.add(i);
+                if (i == 63 && count != 4) {
+                    i = -1;
+                    count++;
+                }
+            }
+        }
+        else if (choice == 1)
+        {
+            Random rand = new Random();
+            int countMainMemory = Integer.parseInt(JOptionPane.showInputDialog(null, "Please enter main memory block size:","Block Size", JOptionPane.PLAIN_MESSAGE));
+            int int_random=0;
+            for (int i=0; i<32*4;i++){
+                int_random = rand.nextInt(countMainMemory);
+                sequence.add(int_random);
+            }
+        }
+        else
+        {
+            for (int repeat = 0; repeat < 4; repeat++) {
+                // First part: 0 to n-1
+                for (int i = 0; i < 32 - 1; i++) {
+                    sequence.add(i);
+                }
+
+                // Second part: 1 to n-1
+                for (int i = 1; i < 32 - 1; i++) {
+                    sequence.add(i);
+                }
+
+                // Third part: n to 2n-1
+                for (int i = 31; i <  64; i++) {
+                    sequence.add(i);
+                }
+            }
+        }
+
+        nInput = (Integer[]) sequence.toArray(new Integer[0]);
+
+        // Now, convert Integer array to int array
+        nInput2 = Arrays.stream(nInput).mapToInt(Integer::intValue).toArray();
+
         Main main = new Main();
-        main.mainMemory = new MainMemory(nInput);
+        main.mainMemory = new MainMemory(nInput2);
         MainFrame frame = new MainFrame(main);
     }
 
