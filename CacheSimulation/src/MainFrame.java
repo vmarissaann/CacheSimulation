@@ -174,6 +174,10 @@ class MainFrame extends JFrame {
                         }
                         //for debugging
                         //System.out.println(sequence);
+                        model.mainMemory=new MainMemory(sequence.stream().mapToInt(Integer::intValue).toArray());
+                        MainFrame.super.repaint();
+                        MainFrame.super.revalidate();
+                        initializeEast();
                     }
                     else if(index==1){
                         textMainMemory.setVisible(true);
