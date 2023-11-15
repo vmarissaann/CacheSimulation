@@ -318,9 +318,10 @@ class MainFrame extends JFrame {
                         if(model.mainMemory.nCurr == model.mainMemory.nArray.length)
                         {
                             skipButton.setEnabled(false);
-                            ((Timer)(e.getSource())).stop();
+
                             model.outputTextFile();
                             displayOutput();
+                            ((Timer)(e.getSource())).stop();
                         }
                     }
                 });
@@ -477,6 +478,10 @@ class MainFrame extends JFrame {
 
         // Replace the number inside the JLabel inside the cache
         cacheBlocks[num].number = model.cache.nArray[num];
+        //System.out.println(cacheBlocks[num].number);
+        if(num2 == mainMemory.length){
+            cacheBlocks[num].update();
+        }
 
         // If the skip button is not pressed and it isn't at the last main memory block
         if (!(num2 == mainMemory.length) && !(isSkip))

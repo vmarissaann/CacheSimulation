@@ -40,6 +40,8 @@ public class Main {
         int count = 0;
         if (choice == 0) {
             //Condition for setting sequence
+
+
             for (int i = 0; i < 64; i++) {
                 sequence.add(i);
                 if (i == 63 && count != 4) {
@@ -79,6 +81,7 @@ public class Main {
         }
 
         nInput = (Integer[]) sequence.toArray(new Integer[0]);
+
 
         // Now, convert Integer array to int array
         nInput2 = Arrays.stream(nInput).mapToInt(Integer::intValue).toArray();
