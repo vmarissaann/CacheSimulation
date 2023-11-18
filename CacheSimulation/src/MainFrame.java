@@ -13,7 +13,7 @@ class MainFrame extends JFrame {
     // JPanels used
     public JPanel compContainer, titleContainer, northPanel, westPanel, cachePanel, eastPanel, mainMemoryPanel, southPanel, centerPanel;
     // JLabels used
-    public JLabel endLabel, titleLabel, algorithmLabel, cacheLabel, memoryLabel;
+    public JLabel endLabel, titleLabel, algorithmLabel, testLabel, cacheLabel, memoryLabel;
     // BlockLabel for aanimattion
     public BlockLabel animatedLabel;
     // JScrollPane for scrolling feature
@@ -97,7 +97,24 @@ class MainFrame extends JFrame {
         algorithmLabel.setText("FULL ASSOCIATIVE RANDOM REPLACEMENT");
         algorithmLabel.setForeground(Color.decode("#C6624F"));
         algorithmLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        editFont(algorithmLabel, 16);
+        editFont(algorithmLabel, 18);
+
+        // Type of test case
+        testLabel = new JLabel();
+        switch (model.testCase()) {
+            case 0:
+            testLabel.setText("SEQUENTIAL SEQUENCE");
+            break;
+            case 1:
+            testLabel.setText("RANDOM SEQUENCE");
+            break;
+            case 2:
+            testLabel.setText("MID-REPEAT BLOCKS");
+            break;
+        }
+        testLabel.setForeground(Color.decode("#24231D"));
+        testLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        editFont(testLabel, 16);
 
         // Container for cache and memory label
         compContainer = new JPanel();
@@ -122,24 +139,10 @@ class MainFrame extends JFrame {
         // Add labels to the containers
         titleContainer.add(titleLabel);
         titleContainer.add(algorithmLabel);
+        titleContainer.add(testLabel);
         compContainer.add(cacheLabel, BorderLayout.WEST);
         compContainer.add(Box.createHorizontalGlue());
         compContainer.add(memoryLabel, BorderLayout.EAST);
-
-//        //dropdown
-//        String[] testCases = {"Sequential Sequence", "Random Sequence", "Mid-repeat blocks"};
-//        comboBox = new JComboBox(testCases);
-//        titleContainer.add(comboBox);
-//        // text field for main memory blocks
-//        textMainMemory = new TextField();
-//        titleContainer.add(textMainMemory);
-//        // submit button for text field for main memory blocks
-//        submit = new JButton("submit");
-//        titleContainer.add(submit);
-//        //setting visibility to false
-//        textMainMemory.setVisible(false);
-//        submit.setVisible(false);
-
 
         // Add the containers to the NORTH region of northPanel
         northPanel.add(titleContainer);
@@ -150,86 +153,6 @@ class MainFrame extends JFrame {
         northPanel.setMaximumSize(new Dimension(Integer.MAX_VALUE, northPanel.getPreferredSize().height));
 
         this.add(northPanel, BorderLayout.NORTH);
-//        comboBox.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                textMainMemory.setVisible(false);
-//                submit.setVisible(false);
-//                int count=0;
-//                if(e.getSource()==comboBox){
-//                    //System.out.println(comboBox.getSelectedItem());
-//                    int index=comboBox.getSelectedIndex();
-//                    System.out.println(index);
-//                    if(index==0){
-//                      //Condition for setting sequence
-//                         sequence = new ArrayList<Integer>();
-//                        for (int i = 0; i < 64; i++) {
-//                            sequence.add(i);
-//                            if(i==63 && count !=4){
-//                                i=-1;
-//                                count++;
-//                            }
-//                        }
-//                        //for debugging
-//                        //System.out.println(sequence);
-//                    }
-//                    else if(index==1){
-//                        textMainMemory.setVisible(true);
-//                        submit.setVisible(true);
-//                        submit.addActionListener(new ActionListener() {
-//                            @Override
-//                            public void actionPerformed(ActionEvent e) {
-//                                String s = e.getActionCommand();
-//                                if (s.equals("submit")) {
-//                                    //for debugging
-//                                    //System.out.println(textMainMemory.getText());
-//                                    Random rand = new Random();
-//                                    sequence = new ArrayList<Integer>();
-//                                    int countMainMemory = Integer.parseInt(textMainMemory.getText());
-//                                    int int_random=0;
-//                                    for (int i=0; i<32*4;i++){
-//                                        int_random = rand.nextInt(countMainMemory);
-//                                        sequence.add(int_random);
-//                                    }
-//                                    //for debugging
-////                                    System.out.println(sequence);
-////                                    System.out.println();
-////                                    System.out.println(sequence.size());
-//                                }
-//                            }
-//                        });
-//
-//                    }
-//                    else {
-//                        textMainMemory.setVisible(false);
-//                        submit.setVisible(false);
-//                        sequence = new ArrayList<Integer>();
-//                        for (int repeat = 0; repeat < 4; repeat++) {
-//                            // First part: 0 to n-1
-//                            for (int i = 0; i < 32 - 1; i++) {
-//                                sequence.add(i);
-//                            }
-//
-//                            // Second part: 1 to n-1
-//                            for (int i = 1; i < 32 - 1; i++) {
-//                                sequence.add(i);
-//                            }
-//
-//                            // Third part: n to 2n-1
-//                            for (int i = 31; i <  64; i++) {
-//                                sequence.add(i);
-//                            }
-//                        }
-//                        //for debugging
-//                        //System.out.println(sequence);
-//                    }
-//
-//                    //model.mainMemory = new MainMemory(sequence);
-//                }
-//            }
-//        });
-
-
     }
     
     

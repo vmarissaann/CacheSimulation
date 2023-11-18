@@ -8,6 +8,7 @@ import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
+    private int choice;
     public Cache cache = new Cache();
     public MainMemory mainMemory;
 
@@ -40,8 +41,6 @@ public class Main {
         int count = 0;
         if (choice == 0) {
             //Condition for setting sequence
-
-
             for (int i = 0; i < 64; i++) {
                 sequence.add(i);
                 if (i == 63 && count != 4) {
@@ -82,13 +81,18 @@ public class Main {
 
         nInput = (Integer[]) sequence.toArray(new Integer[0]);
 
-
         // Now, convert Integer array to int array
         nInput2 = Arrays.stream(nInput).mapToInt(Integer::intValue).toArray();
 
         Main main = new Main();
+        main.choice = choice;
         main.mainMemory = new MainMemory(nInput2);
         MainFrame frame = new MainFrame(main);
+    }
+
+    public int testCase() 
+    {
+        return choice;
     }
 
     public int replaceCache()
