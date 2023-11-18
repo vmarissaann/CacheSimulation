@@ -170,6 +170,11 @@ public class Main {
             }
             System.out.println();
 
+            System.out.println("Input Sequence and hit/misses");
+            for(int i=0; i<mainMemory.nArray.length; i++){
+                System.out.println("Input " + (i+1) + ": " + mainMemory.nArray[i].nNum + " | " + mainMemory.nArray[i].cHit);
+            }
+
 
             fileStream.close();
         } catch (FileNotFoundException e) {

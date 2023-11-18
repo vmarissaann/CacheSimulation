@@ -1,42 +1,171 @@
-Memory Access Count: 59
-Cache Hit Count: 13
-Cache Miss Count: 46
-Cache Hit Rate: 13/59
-Cache Miss Rate: 46/59
-Average Memory Access Time: 126.52542372881356ns
-Total Memory Access Time: 7465.0ns
+Memory Access Count: 128
+Cache Hit Count: 119
+Cache Miss Count: 9
+Cache Hit Rate: 119/128
+Cache Miss Rate: 9/128
+Average Memory Access Time: 12.3203ns
+Total Memory Access Time: 1577.0ns
 
 Cache Contents: 
-Block 0:124
-Block 1:2
+Block 0:0
+Block 1:1
 Block 2:3
-Block 3:50
-Block 4:5
-Block 5:6
-Block 6:7
-Block 7:100
-Block 8:9
-Block 9:10
-Block 10:4
-Block 11:73
-Block 12:13
-Block 13:14
-Block 14:15
-Block 15:16
-Block 16:17
-Block 17:132
-Block 18:19
-Block 19:20
-Block 20:34
-Block 21:53
-Block 22:23
-Block 23:24
-Block 24:282
-Block 25:26
-Block 26:512
-Block 27:28
-Block 28:267
-Block 29:67
-Block 30:31
-Block 31:32
+Block 3:2
+Block 4:8
+Block 5:4
+Block 6:5
+Block 7:7
+Block 8:6
+Block 9:null
+Block 10:null
+Block 11:null
+Block 12:null
+Block 13:null
+Block 14:null
+Block 15:null
+Block 16:null
+Block 17:null
+Block 18:null
+Block 19:null
+Block 20:null
+Block 21:null
+Block 22:null
+Block 23:null
+Block 24:null
+Block 25:null
+Block 26:null
+Block 27:null
+Block 28:null
+Block 29:null
+Block 30:null
+Block 31:null
 
+Input Sequence and hit/misses
+Input 1: 0 | Miss
+Input 2: 1 | Miss
+Input 3: 3 | Miss
+Input 4: 2 | Miss
+Input 5: 3 | Hit
+Input 6: 8 | Miss
+Input 7: 3 | Hit
+Input 8: 8 | Hit
+Input 9: 3 | Hit
+Input 10: 4 | Miss
+Input 11: 0 | Hit
+Input 12: 1 | Hit
+Input 13: 5 | Miss
+Input 14: 7 | Miss
+Input 15: 7 | Hit
+Input 16: 2 | Hit
+Input 17: 6 | Miss
+Input 18: 6 | Hit
+Input 19: 6 | Hit
+Input 20: 4 | Hit
+Input 21: 8 | Hit
+Input 22: 4 | Hit
+Input 23: 8 | Hit
+Input 24: 4 | Hit
+Input 25: 3 | Hit
+Input 26: 3 | Hit
+Input 27: 3 | Hit
+Input 28: 2 | Hit
+Input 29: 7 | Hit
+Input 30: 7 | Hit
+Input 31: 3 | Hit
+Input 32: 7 | Hit
+Input 33: 1 | Hit
+Input 34: 5 | Hit
+Input 35: 5 | Hit
+Input 36: 2 | Hit
+Input 37: 8 | Hit
+Input 38: 3 | Hit
+Input 39: 1 | Hit
+Input 40: 1 | Hit
+Input 41: 1 | Hit
+Input 42: 4 | Hit
+Input 43: 2 | Hit
+Input 44: 0 | Hit
+Input 45: 6 | Hit
+Input 46: 1 | Hit
+Input 47: 0 | Hit
+Input 48: 7 | Hit
+Input 49: 8 | Hit
+Input 50: 7 | Hit
+Input 51: 2 | Hit
+Input 52: 2 | Hit
+Input 53: 4 | Hit
+Input 54: 1 | Hit
+Input 55: 5 | Hit
+Input 56: 1 | Hit
+Input 57: 2 | Hit
+Input 58: 0 | Hit
+Input 59: 8 | Hit
+Input 60: 6 | Hit
+Input 61: 8 | Hit
+Input 62: 4 | Hit
+Input 63: 4 | Hit
+Input 64: 8 | Hit
+Input 65: 1 | Hit
+Input 66: 3 | Hit
+Input 67: 2 | Hit
+Input 68: 1 | Hit
+Input 69: 0 | Hit
+Input 70: 2 | Hit
+Input 71: 0 | Hit
+Input 72: 0 | Hit
+Input 73: 0 | Hit
+Input 74: 4 | Hit
+Input 75: 3 | Hit
+Input 76: 0 | Hit
+Input 77: 2 | Hit
+Input 78: 5 | Hit
+Input 79: 5 | Hit
+Input 80: 3 | Hit
+Input 81: 1 | Hit
+Input 82: 0 | Hit
+Input 83: 6 | Hit
+Input 84: 5 | Hit
+Input 85: 1 | Hit
+Input 86: 3 | Hit
+Input 87: 8 | Hit
+Input 88: 1 | Hit
+Input 89: 2 | Hit
+Input 90: 3 | Hit
+Input 91: 4 | Hit
+Input 92: 2 | Hit
+Input 93: 2 | Hit
+Input 94: 6 | Hit
+Input 95: 2 | Hit
+Input 96: 2 | Hit
+Input 97: 7 | Hit
+Input 98: 1 | Hit
+Input 99: 0 | Hit
+Input 100: 7 | Hit
+Input 101: 0 | Hit
+Input 102: 5 | Hit
+Input 103: 7 | Hit
+Input 104: 2 | Hit
+Input 105: 8 | Hit
+Input 106: 0 | Hit
+Input 107: 6 | Hit
+Input 108: 0 | Hit
+Input 109: 8 | Hit
+Input 110: 6 | Hit
+Input 111: 6 | Hit
+Input 112: 5 | Hit
+Input 113: 6 | Hit
+Input 114: 0 | Hit
+Input 115: 7 | Hit
+Input 116: 6 | Hit
+Input 117: 4 | Hit
+Input 118: 4 | Hit
+Input 119: 5 | Hit
+Input 120: 6 | Hit
+Input 121: 3 | Hit
+Input 122: 2 | Hit
+Input 123: 3 | Hit
+Input 124: 3 | Hit
+Input 125: 3 | Hit
+Input 126: 8 | Hit
+Input 127: 4 | Hit
+Input 128: 8 | Hit
