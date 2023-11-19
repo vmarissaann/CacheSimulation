@@ -19,7 +19,7 @@ class MainFrame extends JFrame {
     // JScrollPane for scrolling feature
     public JScrollPane cacheScroll, mainMemoryScroll;
     // JButtons for manipulating the steps
-    public JButton playButton, skipButton, speedUpButton;
+    public JButton restartButton, playButton, skipButton, speedUpButton;
     // Amount of milliseconds in the animation
     public int PLAY_TIME = 1000;
     // Time for animation
@@ -213,15 +213,50 @@ class MainFrame extends JFrame {
         southPanel = new JPanel(new FlowLayout());
         southPanel.setBorder(BorderFactory.createEmptyBorder(5, 0, 5, 0));
 
-        // Add a play button
+        // Add buttons
         playButton = new JButton();
         playButton.setText("▶");
+        speedUpButton = new JButton();
+        speedUpButton.setText("▶▶");
+        skipButton = new JButton();
+        skipButton.setText("▶▶|");
+        restartButton = new JButton();
+        restartButton.setText("↺");
+        restartButton.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+        
+        // Initially disable speed up and skip button
+        speedUpButton.setEnabled(false);
+        skipButton.setEnabled(false);
+
+        restartButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+
+                SwingUtilities.invokeLater(() -> {
+                    model.startApplication();
+                });
+            }
+        });
+
+        speedUpButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                PLAY_TIME -= 250;
+                if (PLAY_TIME == 250)
+                    speedUpButton.setEnabled(false);
+            }
+        });
 
         playButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Disable play button
+                // Disable play button and restart
                 playButton.setEnabled(false);
+                restartButton.setEnabled(false);
+                // Enable speed up and skip button
+                speedUpButton.setEnabled(true);
+                skipButton.setEnabled(true);
 
                 Timer timer = new Timer(PLAY_TIME + 150, new ActionListener() {
                     @Override
@@ -241,7 +276,7 @@ class MainFrame extends JFrame {
                         if(model.mainMemory.nCurr == model.mainMemory.nArray.length)
                         {
                             skipButton.setEnabled(false);
-
+                            restartButton.setEnabled(true);;
                             model.outputTextFile();
                             displayOutput();
                             ((Timer)(e.getSource())).stop();
@@ -252,10 +287,6 @@ class MainFrame extends JFrame {
                 timer.start();
             }
         });
-
-        // Add a skip button
-        skipButton = new JButton();
-        skipButton.setText("▶▶|");
 
         skipButton.addActionListener(new ActionListener() {
             @Override
@@ -268,24 +299,11 @@ class MainFrame extends JFrame {
                 playButton.setEnabled(false);
                 skipButton.setEnabled(false);
                 speedUpButton.setEnabled(false);
-
-                model.outputTextFile();
-                displayOutput();
+                restartButton.setEnabled(true);
             }
         });
 
-        speedUpButton = new JButton();
-        speedUpButton.setText("▶▶");
-
-        speedUpButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                PLAY_TIME -= 400;
-                if (PLAY_TIME == 250)
-                    speedUpButton.setEnabled(false);
-            }
-        });
-
+        southPanel.add(restartButton);
         southPanel.add(playButton);
         southPanel.add(speedUpButton);
         southPanel.add(skipButton);
@@ -411,6 +429,7 @@ class MainFrame extends JFrame {
         {
             // Temporarily disable the buttons and animate
             playButton.setEnabled(false);
+            restartButton.setEnabled(false);
             animateLabel(mainMemory[num2 - 1], cacheBlocks[num]);
         }
 

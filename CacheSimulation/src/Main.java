@@ -13,6 +13,11 @@ public class Main {
     public MainMemory mainMemory;
 
     public static void main(String[] args) {
+        Main main = new Main();
+        main.startApplication();
+    }
+
+    public void startApplication() {
         // Random sample input
         Integer nInput[];
         int nInput2[];
