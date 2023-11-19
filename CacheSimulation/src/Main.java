@@ -217,8 +217,8 @@ public class Main {
         double missCount = missCnt();
         double hitCount = hitCnt();
 
-        return hitCount + (1 + cache.nCacheLine*10 + 1)*missCount;
+        return hitCount*(cache.nCacheLine) + missCount*cache.nCacheLine*11 + missCount*1;
+        
+        // return hitCount*(cache.nCacheLine) + (1 + cache.nCacheLine*(10 + 1)*missCount;
     }
-
-
 }
