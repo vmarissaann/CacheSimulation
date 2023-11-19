@@ -43,7 +43,7 @@ public class Main {
             //Condition for setting sequence
             for (int i = 0; i < 64; i++) {
                 sequence.add(i);
-                if (i == 63 && count != 4) {
+                if (i == 63 && count != 3) {
                     i = -1;
                     count++;
                 }

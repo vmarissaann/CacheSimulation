@@ -1,171 +1,299 @@
-Memory Access Count: 128
-Cache Hit Count: 119
-Cache Miss Count: 9
-Cache Hit Rate: 119/128
-Cache Miss Rate: 9/128
-Average Memory Access Time: 12.3203ns
-Total Memory Access Time: 1577.0ns
+Memory Access Count: 256
+Cache Hit Count: 39
+Cache Miss Count: 217
+Cache Hit Rate: 39/256
+Cache Miss Rate: 217/256
+Average Memory Access Time: 137.4727ns
+Total Memory Access Time: 35193.0ns
 
 Cache Contents: 
-Block 0:0
-Block 1:1
-Block 2:3
-Block 3:2
-Block 4:8
-Block 5:4
-Block 6:5
-Block 7:7
-Block 8:6
-Block 9:null
-Block 10:null
-Block 11:null
-Block 12:null
-Block 13:null
-Block 14:null
-Block 15:null
-Block 16:null
-Block 17:null
-Block 18:null
-Block 19:null
-Block 20:null
-Block 21:null
-Block 22:null
-Block 23:null
-Block 24:null
-Block 25:null
-Block 26:null
-Block 27:null
-Block 28:null
-Block 29:null
-Block 30:null
-Block 31:null
+Block 0:56
+Block 1:52
+Block 2:45
+Block 3:12
+Block 4:22
+Block 5:21
+Block 6:41
+Block 7:57
+Block 8:27
+Block 9:62
+Block 10:14
+Block 11:37
+Block 12:24
+Block 13:50
+Block 14:58
+Block 15:32
+Block 16:15
+Block 17:46
+Block 18:63
+Block 19:44
+Block 20:55
+Block 21:60
+Block 22:49
+Block 23:39
+Block 24:34
+Block 25:42
+Block 26:29
+Block 27:53
+Block 28:61
+Block 29:35
+Block 30:59
+Block 31:17
 
 Input Sequence and hit/misses
 Input 1: 0 | Miss
 Input 2: 1 | Miss
-Input 3: 3 | Miss
-Input 4: 2 | Miss
-Input 5: 3 | Hit
-Input 6: 8 | Miss
-Input 7: 3 | Hit
-Input 8: 8 | Hit
-Input 9: 3 | Hit
-Input 10: 4 | Miss
-Input 11: 0 | Hit
-Input 12: 1 | Hit
-Input 13: 5 | Miss
-Input 14: 7 | Miss
-Input 15: 7 | Hit
-Input 16: 2 | Hit
-Input 17: 6 | Miss
-Input 18: 6 | Hit
-Input 19: 6 | Hit
-Input 20: 4 | Hit
-Input 21: 8 | Hit
-Input 22: 4 | Hit
-Input 23: 8 | Hit
-Input 24: 4 | Hit
-Input 25: 3 | Hit
-Input 26: 3 | Hit
-Input 27: 3 | Hit
-Input 28: 2 | Hit
-Input 29: 7 | Hit
-Input 30: 7 | Hit
-Input 31: 3 | Hit
-Input 32: 7 | Hit
-Input 33: 1 | Hit
-Input 34: 5 | Hit
-Input 35: 5 | Hit
-Input 36: 2 | Hit
-Input 37: 8 | Hit
-Input 38: 3 | Hit
-Input 39: 1 | Hit
-Input 40: 1 | Hit
-Input 41: 1 | Hit
-Input 42: 4 | Hit
-Input 43: 2 | Hit
-Input 44: 0 | Hit
-Input 45: 6 | Hit
-Input 46: 1 | Hit
-Input 47: 0 | Hit
-Input 48: 7 | Hit
-Input 49: 8 | Hit
-Input 50: 7 | Hit
-Input 51: 2 | Hit
-Input 52: 2 | Hit
-Input 53: 4 | Hit
-Input 54: 1 | Hit
-Input 55: 5 | Hit
-Input 56: 1 | Hit
-Input 57: 2 | Hit
-Input 58: 0 | Hit
-Input 59: 8 | Hit
-Input 60: 6 | Hit
-Input 61: 8 | Hit
-Input 62: 4 | Hit
-Input 63: 4 | Hit
-Input 64: 8 | Hit
-Input 65: 1 | Hit
-Input 66: 3 | Hit
-Input 67: 2 | Hit
-Input 68: 1 | Hit
-Input 69: 0 | Hit
-Input 70: 2 | Hit
-Input 71: 0 | Hit
-Input 72: 0 | Hit
-Input 73: 0 | Hit
-Input 74: 4 | Hit
-Input 75: 3 | Hit
-Input 76: 0 | Hit
-Input 77: 2 | Hit
-Input 78: 5 | Hit
-Input 79: 5 | Hit
-Input 80: 3 | Hit
-Input 81: 1 | Hit
-Input 82: 0 | Hit
-Input 83: 6 | Hit
-Input 84: 5 | Hit
-Input 85: 1 | Hit
-Input 86: 3 | Hit
-Input 87: 8 | Hit
-Input 88: 1 | Hit
-Input 89: 2 | Hit
-Input 90: 3 | Hit
-Input 91: 4 | Hit
-Input 92: 2 | Hit
-Input 93: 2 | Hit
-Input 94: 6 | Hit
-Input 95: 2 | Hit
-Input 96: 2 | Hit
-Input 97: 7 | Hit
-Input 98: 1 | Hit
-Input 99: 0 | Hit
-Input 100: 7 | Hit
-Input 101: 0 | Hit
-Input 102: 5 | Hit
-Input 103: 7 | Hit
-Input 104: 2 | Hit
-Input 105: 8 | Hit
-Input 106: 0 | Hit
-Input 107: 6 | Hit
-Input 108: 0 | Hit
-Input 109: 8 | Hit
-Input 110: 6 | Hit
-Input 111: 6 | Hit
-Input 112: 5 | Hit
-Input 113: 6 | Hit
-Input 114: 0 | Hit
-Input 115: 7 | Hit
-Input 116: 6 | Hit
-Input 117: 4 | Hit
-Input 118: 4 | Hit
-Input 119: 5 | Hit
-Input 120: 6 | Hit
-Input 121: 3 | Hit
-Input 122: 2 | Hit
-Input 123: 3 | Hit
-Input 124: 3 | Hit
-Input 125: 3 | Hit
-Input 126: 8 | Hit
-Input 127: 4 | Hit
-Input 128: 8 | Hit
+Input 3: 2 | Miss
+Input 4: 3 | Miss
+Input 5: 4 | Miss
+Input 6: 5 | Miss
+Input 7: 6 | Miss
+Input 8: 7 | Miss
+Input 9: 8 | Miss
+Input 10: 9 | Miss
+Input 11: 10 | Miss
+Input 12: 11 | Miss
+Input 13: 12 | Miss
+Input 14: 13 | Miss
+Input 15: 14 | Miss
+Input 16: 15 | Miss
+Input 17: 16 | Miss
+Input 18: 17 | Miss
+Input 19: 18 | Miss
+Input 20: 19 | Miss
+Input 21: 20 | Miss
+Input 22: 21 | Miss
+Input 23: 22 | Miss
+Input 24: 23 | Miss
+Input 25: 24 | Miss
+Input 26: 25 | Miss
+Input 27: 26 | Miss
+Input 28: 27 | Miss
+Input 29: 28 | Miss
+Input 30: 29 | Miss
+Input 31: 30 | Miss
+Input 32: 31 | Miss
+Input 33: 32 | Miss
+Input 34: 33 | Miss
+Input 35: 34 | Miss
+Input 36: 35 | Miss
+Input 37: 36 | Miss
+Input 38: 37 | Miss
+Input 39: 38 | Miss
+Input 40: 39 | Miss
+Input 41: 40 | Miss
+Input 42: 41 | Miss
+Input 43: 42 | Miss
+Input 44: 43 | Miss
+Input 45: 44 | Miss
+Input 46: 45 | Miss
+Input 47: 46 | Miss
+Input 48: 47 | Miss
+Input 49: 48 | Miss
+Input 50: 49 | Miss
+Input 51: 50 | Miss
+Input 52: 51 | Miss
+Input 53: 52 | Miss
+Input 54: 53 | Miss
+Input 55: 54 | Miss
+Input 56: 55 | Miss
+Input 57: 56 | Miss
+Input 58: 57 | Miss
+Input 59: 58 | Miss
+Input 60: 59 | Miss
+Input 61: 60 | Miss
+Input 62: 61 | Miss
+Input 63: 62 | Miss
+Input 64: 63 | Miss
+Input 65: 0 | Miss
+Input 66: 1 | Miss
+Input 67: 2 | Miss
+Input 68: 3 | Miss
+Input 69: 4 | Hit
+Input 70: 5 | Hit
+Input 71: 6 | Hit
+Input 72: 7 | Miss
+Input 73: 8 | Miss
+Input 74: 9 | Miss
+Input 75: 10 | Miss
+Input 76: 11 | Miss
+Input 77: 12 | Miss
+Input 78: 13 | Hit
+Input 79: 14 | Miss
+Input 80: 15 | Miss
+Input 81: 16 | Miss
+Input 82: 17 | Miss
+Input 83: 18 | Miss
+Input 84: 19 | Hit
+Input 85: 20 | Hit
+Input 86: 21 | Miss
+Input 87: 22 | Miss
+Input 88: 23 | Miss
+Input 89: 24 | Miss
+Input 90: 25 | Miss
+Input 91: 26 | Miss
+Input 92: 27 | Hit
+Input 93: 28 | Miss
+Input 94: 29 | Hit
+Input 95: 30 | Miss
+Input 96: 31 | Miss
+Input 97: 32 | Miss
+Input 98: 33 | Miss
+Input 99: 34 | Miss
+Input 100: 35 | Miss
+Input 101: 36 | Hit
+Input 102: 37 | Miss
+Input 103: 38 | Miss
+Input 104: 39 | Hit
+Input 105: 40 | Miss
+Input 106: 41 | Miss
+Input 107: 42 | Miss
+Input 108: 43 | Miss
+Input 109: 44 | Miss
+Input 110: 45 | Miss
+Input 111: 46 | Miss
+Input 112: 47 | Miss
+Input 113: 48 | Hit
+Input 114: 49 | Miss
+Input 115: 50 | Miss
+Input 116: 51 | Miss
+Input 117: 52 | Miss
+Input 118: 53 | Miss
+Input 119: 54 | Miss
+Input 120: 55 | Hit
+Input 121: 56 | Miss
+Input 122: 57 | Miss
+Input 123: 58 | Hit
+Input 124: 59 | Miss
+Input 125: 60 | Miss
+Input 126: 61 | Miss
+Input 127: 62 | Miss
+Input 128: 63 | Miss
+Input 129: 0 | Miss
+Input 130: 1 | Miss
+Input 131: 2 | Hit
+Input 132: 3 | Miss
+Input 133: 4 | Miss
+Input 134: 5 | Miss
+Input 135: 6 | Hit
+Input 136: 7 | Miss
+Input 137: 8 | Miss
+Input 138: 9 | Miss
+Input 139: 10 | Miss
+Input 140: 11 | Miss
+Input 141: 12 | Miss
+Input 142: 13 | Miss
+Input 143: 14 | Miss
+Input 144: 15 | Miss
+Input 145: 16 | Hit
+Input 146: 17 | Miss
+Input 147: 18 | Miss
+Input 148: 19 | Hit
+Input 149: 20 | Miss
+Input 150: 21 | Miss
+Input 151: 22 | Miss
+Input 152: 23 | Miss
+Input 153: 24 | Miss
+Input 154: 25 | Hit
+Input 155: 26 | Miss
+Input 156: 27 | Miss
+Input 157: 28 | Miss
+Input 158: 29 | Miss
+Input 159: 30 | Miss
+Input 160: 31 | Hit
+Input 161: 32 | Miss
+Input 162: 33 | Miss
+Input 163: 34 | Hit
+Input 164: 35 | Miss
+Input 165: 36 | Miss
+Input 166: 37 | Miss
+Input 167: 38 | Miss
+Input 168: 39 | Miss
+Input 169: 40 | Hit
+Input 170: 41 | Miss
+Input 171: 42 | Miss
+Input 172: 43 | Miss
+Input 173: 44 | Miss
+Input 174: 45 | Hit
+Input 175: 46 | Miss
+Input 176: 47 | Miss
+Input 177: 48 | Hit
+Input 178: 49 | Miss
+Input 179: 50 | Miss
+Input 180: 51 | Hit
+Input 181: 52 | Hit
+Input 182: 53 | Miss
+Input 183: 54 | Miss
+Input 184: 55 | Miss
+Input 185: 56 | Miss
+Input 186: 57 | Miss
+Input 187: 58 | Miss
+Input 188: 59 | Miss
+Input 189: 60 | Miss
+Input 190: 61 | Hit
+Input 191: 62 | Miss
+Input 192: 63 | Miss
+Input 193: 0 | Miss
+Input 194: 1 | Miss
+Input 195: 2 | Miss
+Input 196: 3 | Miss
+Input 197: 4 | Hit
+Input 198: 5 | Miss
+Input 199: 6 | Hit
+Input 200: 7 | Miss
+Input 201: 8 | Miss
+Input 202: 9 | Miss
+Input 203: 10 | Miss
+Input 204: 11 | Miss
+Input 205: 12 | Miss
+Input 206: 13 | Miss
+Input 207: 14 | Miss
+Input 208: 15 | Miss
+Input 209: 16 | Miss
+Input 210: 17 | Hit
+Input 211: 18 | Miss
+Input 212: 19 | Hit
+Input 213: 20 | Miss
+Input 214: 21 | Miss
+Input 215: 22 | Miss
+Input 216: 23 | Miss
+Input 217: 24 | Miss
+Input 218: 25 | Miss
+Input 219: 26 | Hit
+Input 220: 27 | Miss
+Input 221: 28 | Hit
+Input 222: 29 | Miss
+Input 223: 30 | Miss
+Input 224: 31 | Miss
+Input 225: 32 | Miss
+Input 226: 33 | Miss
+Input 227: 34 | Miss
+Input 228: 35 | Hit
+Input 229: 36 | Miss
+Input 230: 37 | Miss
+Input 231: 38 | Miss
+Input 232: 39 | Miss
+Input 233: 40 | Miss
+Input 234: 41 | Miss
+Input 235: 42 | Miss
+Input 236: 43 | Miss
+Input 237: 44 | Miss
+Input 238: 45 | Miss
+Input 239: 46 | Hit
+Input 240: 47 | Miss
+Input 241: 48 | Miss
+Input 242: 49 | Miss
+Input 243: 50 | Hit
+Input 244: 51 | Miss
+Input 245: 52 | Miss
+Input 246: 53 | Hit
+Input 247: 54 | Miss
+Input 248: 55 | Hit
+Input 249: 56 | Miss
+Input 250: 57 | Miss
+Input 251: 58 | Hit
+Input 252: 59 | Miss
+Input 253: 60 | Miss
+Input 254: 61 | Miss
+Input 255: 62 | Hit
+Input 256: 63 | Miss
