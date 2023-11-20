@@ -1634,7 +1634,16 @@ Just like the specifications, the sequence starts at  0 then it repeats the sequ
 </table>
 <p align=center><b>Table 5. Mid-repeat Blocks Test Cases</b></p>
 
-<p>We can see that overall cache hit is around 107 to 120 while overall cache miss is 256 to 269. This disparity may be because the test case has the numbers going beyond 32 which randomly replaces the blocks from 1 to 30. These blocks are frequently accessed in the cache memory, which may lead to more cache misses. The cache contents at the end of the cache replacement also usually have big numbers. This may be because while the program is finishing up the test cases grow bigger till 63.</p>
+<p>We can see that overall cache hit is around 107 to 120 while overall cache miss is 256 to 269. This disparity may be because the test case has the numbers going beyond 32 which randomly replaces the blocks from 1 to 30. These blocks are frequently accessed in the cache memory, which may lead to more cache misses. It is also noted that the contents of the cache towards the end usually contain bigger numbers. This is likely because in the transfer from main memory to cache, the blocks near the end are usually 31-63, hence why they are more likely to stay in the final snapshot.</p>
+
+## Conclusion
+<p>The results of the three test cases found the following.</p>
+
+<p>For the sequential sequence, though the number of cache hits falls within the range of 30 to 60, the randomized algorithm used in cache block replacement introduced variability that can lead to fluctuations. The unpredictable nature of the replacement algirthm then raises the chance of cache misses.</p>
+
+<p>In the case of the random sequence, the positive integer <i>x</i> that determines the range of numberse produced affects the hit rate. As <i>x</i> increases, the hit rate tends to decrease as there are more unique numbers to choose from, reducing the likelihood of choosing a number that is already present in the cache. Moreover, it was observed that a cache may not be filled up regaradless of whether it is less or more than 32. This is likely due to the nature of random sequencing and the size of <i>x</i>.</p>
+
+<p>Lastly, it is observed in mid-repeat blocks that the cache is initial filled with misses. However, as the sequence repeats until <i>n</i>-1, all subsequent iterations become hits. Moving from <i>n</i>-1 to 2<i>n</i> introduces misses again as these blocks have not been placed into the cache before. The cache hit rate then starts to fluctuate due to the random replacement algorithm.</p>
 
 ## References
 <p>Knuth, D. E. (1970). The art of computer programming. Volume 2:  Seminumerical algorithms. <i>American Mathematical Monthly, 77</i>(8), 900. https: //doi.org/10.2307/2317055</p>
