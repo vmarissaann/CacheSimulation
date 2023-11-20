@@ -1,5 +1,9 @@
 # Cache Simulation Project
 
+<p>To start the project, please access the directory that contains the jar file and input the following in your terminal. This is also demonstrated in the video.</p>
+
+```java -jar CacheSimulation.jar```
+
 <p>This cache simulation project uses a <b>full associative mapping function and random replacement algorithm</b>. It uses the Random class from the Java standard library to generate a pseudo-random number that determines what cache block will be replaced. In this cache operation, the given are the following:</p>
 <ul>
   <li>Number of cache blocks = 32 blocks</li>
