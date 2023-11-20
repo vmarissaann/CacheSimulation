@@ -15,6 +15,7 @@
 ## Sequential Sequence
 <p>In the Sequential Sequence, the cache block pattern follows a sequence of up to 2<i>n</i> cache blocks, with <i>n</i> set as 32 cache blocks. Consequently, the pattern spans 64 cache blocks, denoted as 0, 1, 2, 3...63. Notably, this sequence repeats four times, resulting in the series 0...63, 0...63, 0...63, 0...63. Table 1 below displays a total of ten test cases for the sequential sequence.</p>
 
+<p align=center><b>Table 1. Sequential Sequence Test Cases</b></p>
 <table align=center>
   <tr>
     <th>Test Case</th>
@@ -572,7 +573,6 @@
     </td>
   </tr>
 </table>
-<p align=center><b>Table 1. Sequential Sequence Test Cases</b></p>
 
 <p>Based on the collected data as seen in Table 1, the number of cache hits consistently falls within the range of 30 to 60, yet it remains susceptible to fluctuations outside this range due to the unpredictable nature of the randomized algorithm used in the  cache Block replacement. The replacement process, which is randomized, introduces variability to both the average access time and the total access time. Despite minor variations in the recorded data for average access time and total access time, these differences do not appear to be outliers based on visual inspection.</p>
 
@@ -585,6 +585,7 @@
 
 <p>When the next random input is read, Case A has a 32/200 or 16% chance to have a hit. Case B on the other hand has a 32/500 or a 6.4%.  With this in mind Case B has a lesser chance of having a hit than Case A simply because it has a bigger <i>x</i>. Of course, this is still up to chance. The input sequence of Case A could have all unique numbers leading to 128 misses, while Case B could have a miniscule chance of having all 128 numbers equal to the same thing leading to 127 hits and 1 miss. The tables below shows three test cases each for Case A and B that display this behavior.</p>
 
+<p align=center><b>Table 2. Random Sequence Test Cases (Case A)</b></p>
 <table align=center>
   <tr>
     <th>Test Case</th>
@@ -757,8 +758,8 @@
     </td>
   </tr>
 </table>
-<p align=center><b>Table 2. Random Sequence Test Cases (Case A)</b></p>
 
+<p align=center><b>Table 3. Random Sequence Test Cases (Case B)</b></p>
 <table align=center>
   <tr>
     <th>Test Case</th>
@@ -931,12 +932,12 @@
     </td>
   </tr>
 </table>
-<p align=center><b>Table 3. Random Sequence Test Cases (Case B)</b></p>
 
 <p>As seen in the two tables, Case A has an average of 17 hits per run, while Case B has an average of 6.67 hits per run. This shows that as the range increases hit rate decreases in random sequencing.</p>
 
 <p>Another thing to note is that the cache may not be filled up after a run. For example if the range is less than 32, even if all the unique numbers have been used, there is not enough to fill up the cache. For example, the <i>x</i> is 10, which is from 0 to 9. There are only 10 unique numbers to choose from and only a maximum of ten spaces would be filled up since there will be no repeats in a cache. There is also a chance that not all the blocks in the cache are filled up even when the range is equal or greater than 32. For example, the <i>x</i> is 100 which is from 0 to 90, but all the numbers found in the input sequence are from 40 to 59. Therefore only 20 out of the 32 cache blocks would be filled up in this case The table below shows one test case of <i>x</i> < 32 and one test case where <i>x</i> > 32.</p>
 
+<p align=center><b>Table 4. Random Sequence Test Cases (Unfilled Cache)</b></p>
 <table align=center>
   <tr>
     <th>Test Case</th>
@@ -1060,7 +1061,6 @@
     </td>
   </tr>
 </table>
-<p align=center><b>Table 4. Random Sequence Test Cases (Unfilled Cache)</b></p>
 
 ## Mid-repeat Blocks
 
@@ -1079,6 +1079,7 @@ Just like the specifications, the sequence starts at  0 then it repeats the sequ
 
 <p>At the start, we can see that while it was filling the cache blocks, they were all misses. However the next part of the sequence where it repeats from 1 to <i>n</i>-1 fills 1-30 with hits, and 31 to 63 with misses as they have not been placed in the cache before. After this, the remaining iterations are filled with random misses and hits due to the random replacement algorithm of the simulation. To demonstrate this further, Table 5 below displays a total of ten test cases for the mid-repeat blocks.</p>
 
+<p align=center><b>Table 5. Mid-repeat Blocks Test Cases</b></p>
 <table align=center>
   <tr>
     <th>Test Case</th>
@@ -1636,7 +1637,6 @@ Just like the specifications, the sequence starts at  0 then it repeats the sequ
     </td>
   </tr>
 </table>
-<p align=center><b>Table 5. Mid-repeat Blocks Test Cases</b></p>
 
 <p>We can see that overall cache hit is around 107 to 120 while overall cache miss is 256 to 269. This disparity may be because the test case has the numbers going beyond 32 which randomly replaces the blocks from 1 to 30. These blocks are frequently accessed in the cache memory, which may lead to more cache misses. It is also noted that the contents of the cache towards the end usually contain bigger numbers. This is likely because in the transfer from main memory to cache, the blocks near the end are usually 31-63, hence why they are more likely to stay in the final snapshot.</p>
 
