@@ -91,6 +91,7 @@ public class Main {
 
         Main main = new Main();
         main.choice = choice;
+        // int[] nInput3 = {1,2,3,4,5,6,7};
         main.mainMemory = new MainMemory(nInput2);
         MainFrame frame = new MainFrame(main);
     }

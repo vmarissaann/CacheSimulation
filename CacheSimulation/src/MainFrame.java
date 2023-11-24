@@ -19,7 +19,7 @@ class MainFrame extends JFrame {
     // JScrollPane for scrolling feature
     public JScrollPane cacheScroll, mainMemoryScroll;
     // JButtons for manipulating the steps
-    public JButton restartButton, playButton, skipButton, speedUpButton;
+    public JButton restartButton, pauseButton, playButton, skipButton, speedUpButton;
     // Amount of milliseconds in the animation
     public int PLAY_TIME = 1000;
     // Time for animation
@@ -35,6 +35,9 @@ class MainFrame extends JFrame {
     // The model to be used for storing data and using functions
     public Main model;
     public MainMemory memory;
+
+    // For pausing the animation
+    private boolean isPaused = false;
 
     // Constructor
     public MainFrame(Main model) {
@@ -209,7 +212,7 @@ class MainFrame extends JFrame {
 
     // Initialize the south panel
     public void initializeSouth()
-    {
+    {        
         southPanel = new JPanel(new FlowLayout());
         southPanel.setBorder(BorderFactory.createEmptyBorder(5, 0, 5, 0));
 
@@ -223,11 +226,14 @@ class MainFrame extends JFrame {
         restartButton = new JButton();
         restartButton.setText("↺");
         restartButton.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+        pauseButton = new JButton();
+        pauseButton.setText("▐▐ ");
         
         // Initially disable speed up and skip button
         speedUpButton.setEnabled(false);
         skipButton.setEnabled(false);
-
+        pauseButton.setEnabled(false);
+        
         restartButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -236,6 +242,19 @@ class MainFrame extends JFrame {
                 SwingUtilities.invokeLater(() -> {
                     model.startApplication();
                 });
+            }
+        });
+
+        pauseButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                isPaused = !isPaused;
+        
+                // Enable/disable buttons based on the pause state
+                playButton.setEnabled(true);
+                pauseButton.setEnabled(false);
+                speedUpButton.setEnabled(false);
+                skipButton.setEnabled(false);
             }
         });
 
@@ -251,40 +270,50 @@ class MainFrame extends JFrame {
         playButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Disable play button and restart
-                playButton.setEnabled(false);
-                restartButton.setEnabled(false);
-                // Enable speed up and skip button
-                speedUpButton.setEnabled(true);
-                skipButton.setEnabled(true);
+                if (isPaused) {
+                    isPaused = false; 
+                    pauseButton.setEnabled(true);
+                    if (PLAY_TIME != 250)
+                        speedUpButton.setEnabled(true);
+                } else {
+                    // Disable play button and restart
+                    playButton.setEnabled(false);
+                    restartButton.setEnabled(false);
+                    
+                    // Enable speed up, skip, and pause button
+                    speedUpButton.setEnabled(true);
+                    skipButton.setEnabled(true);
+                    pauseButton.setEnabled(true);
 
-                Timer timer = new Timer(PLAY_TIME + 150, new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
+                    Timer timer = new Timer(PLAY_TIME + 150, new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
 
-                        // Call the replace cache function
-                        try
-                        {
-                            replaceCache(false);
-                        } catch (Exception exception)
-                        {
-                            skipButton.setEnabled(false);
-                            ((Timer)(e.getSource())).stop();
+                            if (!isPaused) {
+                                // Call the replace cache function
+                                try
+                                {
+                                    replaceCache(false);
+                                } catch (Exception exception) {
+                                    skipButton.setEnabled(false);
+                                    ((Timer)(e.getSource())).stop();
+                                }
+                            }
+                            
+                            // Disable both buttons if it is the last block already
+                            if (model.mainMemory.nCurr == model.mainMemory.nArray.length) {
+                                skipButton.setEnabled(false);
+                                pauseButton.setEnabled(false);
+                                restartButton.setEnabled(true);
+                                model.outputTextFile();
+                                displayOutput();
+                                ((Timer)(e.getSource())).stop();
+                            }
                         }
-
-                        // Disable both buttons if it is the last block already
-                        if(model.mainMemory.nCurr == model.mainMemory.nArray.length)
-                        {
-                            skipButton.setEnabled(false);
-                            restartButton.setEnabled(true);;
-                            model.outputTextFile();
-                            displayOutput();
-                            ((Timer)(e.getSource())).stop();
-                        }
-                    }
-                });
-                startTime = System.currentTimeMillis();
-                timer.start();
+                    });
+                    startTime = System.currentTimeMillis();
+                    timer.start();
+                }
             }
         });
 
@@ -300,10 +329,12 @@ class MainFrame extends JFrame {
                 skipButton.setEnabled(false);
                 speedUpButton.setEnabled(false);
                 restartButton.setEnabled(true);
+                pauseButton.setEnabled(false);
             }
         });
 
         southPanel.add(restartButton);
+        southPanel.add(pauseButton);
         southPanel.add(playButton);
         southPanel.add(speedUpButton);
         southPanel.add(skipButton);
@@ -457,47 +488,51 @@ class MainFrame extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Change it to be visible and refresh its view
-                animatedLabel.setVisible(true);
-                animatedLabel.repaint();
-                animatedLabel.revalidate();
+                
+                if (!isPaused) {
+                    // Change it to be visible and refresh its view
+                    animatedLabel.setVisible(true);
+                    animatedLabel.repaint();
+                    animatedLabel.revalidate();
 
-                // Get the position of the JLabel of the starting position and destination position
-                double x1 = startLabel.getLocationOnScreen().getX(), y1 = startLabel.getLocationOnScreen().getY();
-                double x2 = destinationLabel.getLocationOnScreen().getX(), y2 = destinationLabel.getLocationOnScreen().getY();
+                    // Get the position of the JLabel of the starting position and destination position
+                    double x1 = startLabel.getLocationOnScreen().getX(), y1 = startLabel.getLocationOnScreen().getY();
+                    double x2 = destinationLabel.getLocationOnScreen().getX(), y2 = destinationLabel.getLocationOnScreen().getY();
 
-                double offsetX = centerPanel.getLocationOnScreen().getX();
-                double offsetY = centerPanel.getLocationOnScreen().getY();
+                    double offsetX = centerPanel.getLocationOnScreen().getX();
+                    double offsetY = centerPanel.getLocationOnScreen().getY();
 
-                // Get the time and progress
-                long duration = System.currentTimeMillis() - startTime;
-                float progress = (float) duration / (float) PLAY_TIME;
+                    // Get the time and progress
+                    long duration = System.currentTimeMillis() - startTime;
+                    float progress = (float) duration / (float) PLAY_TIME;
 
-                // Check if the progress is complete
-                if (progress > 1f) {
-                    progress = 1f;
+                    // Check if the progress is complete
+                    if (progress > 1f) {
+                        progress = 1f;
 
-                    // Re-enable the buttons
-                    skipButton.setEnabled(true);
+                        // Re-enable the buttons
+                        skipButton.setEnabled(true);
 
-                    // Remove the animated Label and refresh the view
-                    centerPanel.remove(animatedLabel);
-                    centerPanel.repaint();
-                    centerPanel.revalidate();
+                        // Remove the animated Label and refresh the view
+                        centerPanel.remove(animatedLabel);
+                        centerPanel.repaint();
+                        centerPanel.revalidate();
 
-                    // Stop the loop
-                    ((Timer)(e.getSource())).stop();
+                        // Stop the loop
+                        ((Timer)(e.getSource())).stop();
+                    }
+
+                    // Get the current position of the animated label by its progress
+                    double x = x1 + (int) Math.round((x2 - x1) * progress);
+                    double y = y1 + (int) Math.round((y2 - y1) * progress);
+
+                    x -= offsetX;
+                    y -= offsetY;
+
+                    // Set the location
+                    animatedLabel.setLocation((int) x, (int) y);
                 }
-
-                // Get the current position of the animated label by its progress
-                double x = x1 + (int) Math.round((x2 - x1) * progress);
-                double y = y1 + (int) Math.round((y2 - y1) * progress);
-
-                x -= offsetX;
-                y -= offsetY;
-
-                // Set the location
-                animatedLabel.setLocation((int) x, (int) y);
+                
             }
         });
         // Start the timer loop

@@ -1,63 +1,420 @@
-Memory Access Count: 20
-Cache Hit Count: 15
-Cache Miss Count: 5
-Cache Hit Rate: 15/20
-Cache Miss Rate: 5/20
-Average Memory Access Time: 41.25ns
-Total Memory Access Time: 825.0ns
+Memory Access Count: 376
+Cache Hit Count: 110
+Cache Miss Count: 266
+Cache Hit Rate: 110/376
+Cache Miss Rate: 266/376
+Average Memory Access Time: 114.8989ns
+Total Memory Access Time: 48842.0ns
 
 Cache Contents: 
-Block 0:0
-Block 1:1
-Block 2:2
-Block 3:3
-Block 4:4
-Block 5:null
-Block 6:null
-Block 7:null
-Block 8:null
-Block 9:null
-Block 10:null
-Block 11:null
-Block 12:null
-Block 13:null
-Block 14:null
-Block 15:null
-Block 16:null
-Block 17:null
-Block 18:null
-Block 19:null
-Block 20:null
-Block 21:null
-Block 22:null
-Block 23:null
-Block 24:null
-Block 25:null
-Block 26:null
-Block 27:null
-Block 28:null
-Block 29:null
-Block 30:null
-Block 31:null
+Block 0:38
+Block 1:27
+Block 2:63
+Block 3:35
+Block 4:25
+Block 5:59
+Block 6:62
+Block 7:23
+Block 8:61
+Block 9:55
+Block 10:43
+Block 11:49
+Block 12:48
+Block 13:17
+Block 14:31
+Block 15:47
+Block 16:45
+Block 17:52
+Block 18:40
+Block 19:58
+Block 20:46
+Block 21:32
+Block 22:57
+Block 23:53
+Block 24:54
+Block 25:44
+Block 26:15
+Block 27:10
+Block 28:60
+Block 29:26
+Block 30:37
+Block 31:42
 
 Input Sequence and hit/misses
-Input 1: 0 | Miss
-Input 2: 1 | Miss
-Input 3: 2 | Miss
-Input 4: 3 | Miss
-Input 5: 4 | Miss
-Input 6: 0 | Hit
-Input 7: 1 | Hit
-Input 8: 2 | Hit
-Input 9: 3 | Hit
-Input 10: 4 | Hit
-Input 11: 0 | Hit
-Input 12: 1 | Hit
-Input 13: 2 | Hit
-Input 14: 3 | Hit
-Input 15: 4 | Hit
-Input 16: 0 | Hit
-Input 17: 1 | Hit
-Input 18: 2 | Hit
-Input 19: 3 | Hit
-Input 20: 4 | Hit
+Data -> Cache Block
+Input: 1 | Data: 0 -> Cache Block 0 | Miss
+Input: 2 | Data: 1 -> Cache Block 1 | Miss
+Input: 3 | Data: 2 -> Cache Block 2 | Miss
+Input: 4 | Data: 3 -> Cache Block 3 | Miss
+Input: 5 | Data: 4 -> Cache Block 4 | Miss
+Input: 6 | Data: 5 -> Cache Block 5 | Miss
+Input: 7 | Data: 6 -> Cache Block 6 | Miss
+Input: 8 | Data: 7 -> Cache Block 7 | Miss
+Input: 9 | Data: 8 -> Cache Block 8 | Miss
+Input: 10 | Data: 9 -> Cache Block 9 | Miss
+Input: 11 | Data: 10 -> Cache Block 10 | Miss
+Input: 12 | Data: 11 -> Cache Block 11 | Miss
+Input: 13 | Data: 12 -> Cache Block 12 | Miss
+Input: 14 | Data: 13 -> Cache Block 13 | Miss
+Input: 15 | Data: 14 -> Cache Block 14 | Miss
+Input: 16 | Data: 15 -> Cache Block 15 | Miss
+Input: 17 | Data: 16 -> Cache Block 16 | Miss
+Input: 18 | Data: 17 -> Cache Block 17 | Miss
+Input: 19 | Data: 18 -> Cache Block 18 | Miss
+Input: 20 | Data: 19 -> Cache Block 19 | Miss
+Input: 21 | Data: 20 -> Cache Block 20 | Miss
+Input: 22 | Data: 21 -> Cache Block 21 | Miss
+Input: 23 | Data: 22 -> Cache Block 22 | Miss
+Input: 24 | Data: 23 -> Cache Block 23 | Miss
+Input: 25 | Data: 24 -> Cache Block 24 | Miss
+Input: 26 | Data: 25 -> Cache Block 25 | Miss
+Input: 27 | Data: 26 -> Cache Block 26 | Miss
+Input: 28 | Data: 27 -> Cache Block 27 | Miss
+Input: 29 | Data: 28 -> Cache Block 28 | Miss
+Input: 30 | Data: 29 -> Cache Block 29 | Miss
+Input: 31 | Data: 30 -> Cache Block 30 | Miss
+Input: 32 | Data: 1 -> Cache Block 1 | Hit
+Input: 33 | Data: 2 -> Cache Block 2 | Hit
+Input: 34 | Data: 3 -> Cache Block 3 | Hit
+Input: 35 | Data: 4 -> Cache Block 4 | Hit
+Input: 36 | Data: 5 -> Cache Block 5 | Hit
+Input: 37 | Data: 6 -> Cache Block 6 | Hit
+Input: 38 | Data: 7 -> Cache Block 7 | Hit
+Input: 39 | Data: 8 -> Cache Block 8 | Hit
+Input: 40 | Data: 9 -> Cache Block 9 | Hit
+Input: 41 | Data: 10 -> Cache Block 10 | Hit
+Input: 42 | Data: 11 -> Cache Block 11 | Hit
+Input: 43 | Data: 12 -> Cache Block 12 | Hit
+Input: 44 | Data: 13 -> Cache Block 13 | Hit
+Input: 45 | Data: 14 -> Cache Block 14 | Hit
+Input: 46 | Data: 15 -> Cache Block 15 | Hit
+Input: 47 | Data: 16 -> Cache Block 16 | Hit
+Input: 48 | Data: 17 -> Cache Block 17 | Hit
+Input: 49 | Data: 18 -> Cache Block 18 | Hit
+Input: 50 | Data: 19 -> Cache Block 19 | Hit
+Input: 51 | Data: 20 -> Cache Block 20 | Hit
+Input: 52 | Data: 21 -> Cache Block 21 | Hit
+Input: 53 | Data: 22 -> Cache Block 22 | Hit
+Input: 54 | Data: 23 -> Cache Block 23 | Hit
+Input: 55 | Data: 24 -> Cache Block 24 | Hit
+Input: 56 | Data: 25 -> Cache Block 25 | Hit
+Input: 57 | Data: 26 -> Cache Block 26 | Hit
+Input: 58 | Data: 27 -> Cache Block 27 | Hit
+Input: 59 | Data: 28 -> Cache Block 28 | Hit
+Input: 60 | Data: 29 -> Cache Block 29 | Hit
+Input: 61 | Data: 30 -> Cache Block 30 | Hit
+Input: 62 | Data: 31 -> Cache Block 31 | Miss
+Input: 63 | Data: 32 -> Cache Block 20 | Miss
+Input: 64 | Data: 33 -> Cache Block 13 | Miss
+Input: 65 | Data: 34 -> Cache Block 30 | Miss
+Input: 66 | Data: 35 -> Cache Block 1 | Miss
+Input: 67 | Data: 36 -> Cache Block 13 | Miss
+Input: 68 | Data: 37 -> Cache Block 10 | Miss
+Input: 69 | Data: 38 -> Cache Block 28 | Miss
+Input: 70 | Data: 39 -> Cache Block 9 | Miss
+Input: 71 | Data: 40 -> Cache Block 31 | Miss
+Input: 72 | Data: 41 -> Cache Block 18 | Miss
+Input: 73 | Data: 42 -> Cache Block 9 | Miss
+Input: 74 | Data: 43 -> Cache Block 10 | Miss
+Input: 75 | Data: 44 -> Cache Block 15 | Miss
+Input: 76 | Data: 45 -> Cache Block 7 | Miss
+Input: 77 | Data: 46 -> Cache Block 31 | Miss
+Input: 78 | Data: 47 -> Cache Block 24 | Miss
+Input: 79 | Data: 48 -> Cache Block 7 | Miss
+Input: 80 | Data: 49 -> Cache Block 3 | Miss
+Input: 81 | Data: 50 -> Cache Block 9 | Miss
+Input: 82 | Data: 51 -> Cache Block 6 | Miss
+Input: 83 | Data: 52 -> Cache Block 10 | Miss
+Input: 84 | Data: 53 -> Cache Block 15 | Miss
+Input: 85 | Data: 54 -> Cache Block 24 | Miss
+Input: 86 | Data: 55 -> Cache Block 19 | Miss
+Input: 87 | Data: 56 -> Cache Block 27 | Miss
+Input: 88 | Data: 57 -> Cache Block 14 | Miss
+Input: 89 | Data: 58 -> Cache Block 28 | Miss
+Input: 90 | Data: 59 -> Cache Block 29 | Miss
+Input: 91 | Data: 60 -> Cache Block 5 | Miss
+Input: 92 | Data: 61 -> Cache Block 18 | Miss
+Input: 93 | Data: 62 -> Cache Block 27 | Miss
+Input: 94 | Data: 63 -> Cache Block 2 | Miss
+Input: 95 | Data: 0 -> Cache Block 0 | Hit
+Input: 96 | Data: 1 -> Cache Block 31 | Miss
+Input: 97 | Data: 2 -> Cache Block 4 | Miss
+Input: 98 | Data: 3 -> Cache Block 11 | Miss
+Input: 99 | Data: 4 -> Cache Block 10 | Miss
+Input: 100 | Data: 5 -> Cache Block 27 | Miss
+Input: 101 | Data: 6 -> Cache Block 7 | Miss
+Input: 102 | Data: 7 -> Cache Block 20 | Miss
+Input: 103 | Data: 8 -> Cache Block 8 | Hit
+Input: 104 | Data: 9 -> Cache Block 23 | Miss
+Input: 105 | Data: 10 -> Cache Block 22 | Miss
+Input: 106 | Data: 11 -> Cache Block 12 | Miss
+Input: 107 | Data: 12 -> Cache Block 2 | Miss
+Input: 108 | Data: 13 -> Cache Block 28 | Miss
+Input: 109 | Data: 14 -> Cache Block 17 | Miss
+Input: 110 | Data: 15 -> Cache Block 4 | Miss
+Input: 111 | Data: 16 -> Cache Block 16 | Hit
+Input: 112 | Data: 17 -> Cache Block 16 | Miss
+Input: 113 | Data: 18 -> Cache Block 21 | Miss
+Input: 114 | Data: 19 -> Cache Block 7 | Miss
+Input: 115 | Data: 20 -> Cache Block 3 | Miss
+Input: 116 | Data: 21 -> Cache Block 17 | Miss
+Input: 117 | Data: 22 -> Cache Block 22 | Miss
+Input: 118 | Data: 23 -> Cache Block 14 | Miss
+Input: 119 | Data: 24 -> Cache Block 15 | Miss
+Input: 120 | Data: 25 -> Cache Block 25 | Hit
+Input: 121 | Data: 26 -> Cache Block 26 | Hit
+Input: 122 | Data: 27 -> Cache Block 19 | Miss
+Input: 123 | Data: 28 -> Cache Block 3 | Miss
+Input: 124 | Data: 29 -> Cache Block 6 | Miss
+Input: 125 | Data: 30 -> Cache Block 8 | Miss
+Input: 126 | Data: 1 -> Cache Block 31 | Hit
+Input: 127 | Data: 2 -> Cache Block 28 | Miss
+Input: 128 | Data: 3 -> Cache Block 11 | Hit
+Input: 129 | Data: 4 -> Cache Block 10 | Hit
+Input: 130 | Data: 5 -> Cache Block 27 | Hit
+Input: 131 | Data: 6 -> Cache Block 30 | Miss
+Input: 132 | Data: 7 -> Cache Block 20 | Hit
+Input: 133 | Data: 8 -> Cache Block 4 | Miss
+Input: 134 | Data: 9 -> Cache Block 23 | Hit
+Input: 135 | Data: 10 -> Cache Block 24 | Miss
+Input: 136 | Data: 11 -> Cache Block 12 | Hit
+Input: 137 | Data: 12 -> Cache Block 2 | Hit
+Input: 138 | Data: 13 -> Cache Block 23 | Miss
+Input: 139 | Data: 14 -> Cache Block 9 | Miss
+Input: 140 | Data: 15 -> Cache Block 15 | Miss
+Input: 141 | Data: 16 -> Cache Block 31 | Miss
+Input: 142 | Data: 17 -> Cache Block 16 | Hit
+Input: 143 | Data: 18 -> Cache Block 21 | Hit
+Input: 144 | Data: 19 -> Cache Block 7 | Hit
+Input: 145 | Data: 20 -> Cache Block 29 | Miss
+Input: 146 | Data: 21 -> Cache Block 17 | Hit
+Input: 147 | Data: 22 -> Cache Block 22 | Hit
+Input: 148 | Data: 23 -> Cache Block 14 | Hit
+Input: 149 | Data: 24 -> Cache Block 30 | Miss
+Input: 150 | Data: 25 -> Cache Block 25 | Hit
+Input: 151 | Data: 26 -> Cache Block 26 | Hit
+Input: 152 | Data: 27 -> Cache Block 19 | Hit
+Input: 153 | Data: 28 -> Cache Block 3 | Hit
+Input: 154 | Data: 29 -> Cache Block 6 | Hit
+Input: 155 | Data: 30 -> Cache Block 8 | Hit
+Input: 156 | Data: 31 -> Cache Block 15 | Miss
+Input: 157 | Data: 32 -> Cache Block 14 | Miss
+Input: 158 | Data: 33 -> Cache Block 30 | Miss
+Input: 159 | Data: 34 -> Cache Block 26 | Miss
+Input: 160 | Data: 35 -> Cache Block 1 | Hit
+Input: 161 | Data: 36 -> Cache Block 13 | Hit
+Input: 162 | Data: 37 -> Cache Block 0 | Miss
+Input: 163 | Data: 38 -> Cache Block 0 | Miss
+Input: 164 | Data: 39 -> Cache Block 15 | Miss
+Input: 165 | Data: 40 -> Cache Block 13 | Miss
+Input: 166 | Data: 41 -> Cache Block 27 | Miss
+Input: 167 | Data: 42 -> Cache Block 14 | Miss
+Input: 168 | Data: 43 -> Cache Block 24 | Miss
+Input: 169 | Data: 44 -> Cache Block 4 | Miss
+Input: 170 | Data: 45 -> Cache Block 8 | Miss
+Input: 171 | Data: 46 -> Cache Block 21 | Miss
+Input: 172 | Data: 47 -> Cache Block 27 | Miss
+Input: 173 | Data: 48 -> Cache Block 10 | Miss
+Input: 174 | Data: 49 -> Cache Block 17 | Miss
+Input: 175 | Data: 50 -> Cache Block 3 | Miss
+Input: 176 | Data: 51 -> Cache Block 12 | Miss
+Input: 177 | Data: 52 -> Cache Block 9 | Miss
+Input: 178 | Data: 53 -> Cache Block 16 | Miss
+Input: 179 | Data: 54 -> Cache Block 1 | Miss
+Input: 180 | Data: 55 -> Cache Block 17 | Miss
+Input: 181 | Data: 56 -> Cache Block 18 | Miss
+Input: 182 | Data: 57 -> Cache Block 29 | Miss
+Input: 183 | Data: 58 -> Cache Block 2 | Miss
+Input: 184 | Data: 59 -> Cache Block 27 | Miss
+Input: 185 | Data: 60 -> Cache Block 5 | Hit
+Input: 186 | Data: 61 -> Cache Block 28 | Miss
+Input: 187 | Data: 62 -> Cache Block 13 | Miss
+Input: 188 | Data: 63 -> Cache Block 18 | Miss
+Input: 189 | Data: 0 -> Cache Block 25 | Miss
+Input: 190 | Data: 1 -> Cache Block 5 | Miss
+Input: 191 | Data: 2 -> Cache Block 10 | Miss
+Input: 192 | Data: 3 -> Cache Block 11 | Hit
+Input: 193 | Data: 4 -> Cache Block 10 | Miss
+Input: 194 | Data: 5 -> Cache Block 10 | Miss
+Input: 195 | Data: 6 -> Cache Block 10 | Miss
+Input: 196 | Data: 7 -> Cache Block 20 | Hit
+Input: 197 | Data: 8 -> Cache Block 13 | Miss
+Input: 198 | Data: 9 -> Cache Block 6 | Miss
+Input: 199 | Data: 10 -> Cache Block 13 | Miss
+Input: 200 | Data: 11 -> Cache Block 29 | Miss
+Input: 201 | Data: 12 -> Cache Block 12 | Miss
+Input: 202 | Data: 13 -> Cache Block 23 | Hit
+Input: 203 | Data: 14 -> Cache Block 8 | Miss
+Input: 204 | Data: 15 -> Cache Block 9 | Miss
+Input: 205 | Data: 16 -> Cache Block 31 | Hit
+Input: 206 | Data: 17 -> Cache Block 18 | Miss
+Input: 207 | Data: 18 -> Cache Block 18 | Miss
+Input: 208 | Data: 19 -> Cache Block 7 | Hit
+Input: 209 | Data: 20 -> Cache Block 25 | Miss
+Input: 210 | Data: 21 -> Cache Block 11 | Miss
+Input: 211 | Data: 22 -> Cache Block 22 | Hit
+Input: 212 | Data: 23 -> Cache Block 13 | Miss
+Input: 213 | Data: 24 -> Cache Block 23 | Miss
+Input: 214 | Data: 25 -> Cache Block 30 | Miss
+Input: 215 | Data: 26 -> Cache Block 19 | Miss
+Input: 216 | Data: 27 -> Cache Block 7 | Miss
+Input: 217 | Data: 28 -> Cache Block 22 | Miss
+Input: 218 | Data: 29 -> Cache Block 25 | Miss
+Input: 219 | Data: 30 -> Cache Block 30 | Miss
+Input: 220 | Data: 1 -> Cache Block 5 | Hit
+Input: 221 | Data: 2 -> Cache Block 4 | Miss
+Input: 222 | Data: 3 -> Cache Block 22 | Miss
+Input: 223 | Data: 4 -> Cache Block 25 | Miss
+Input: 224 | Data: 5 -> Cache Block 22 | Miss
+Input: 225 | Data: 6 -> Cache Block 10 | Hit
+Input: 226 | Data: 7 -> Cache Block 20 | Hit
+Input: 227 | Data: 8 -> Cache Block 24 | Miss
+Input: 228 | Data: 9 -> Cache Block 6 | Hit
+Input: 229 | Data: 10 -> Cache Block 27 | Miss
+Input: 230 | Data: 11 -> Cache Block 29 | Hit
+Input: 231 | Data: 12 -> Cache Block 12 | Hit
+Input: 232 | Data: 13 -> Cache Block 21 | Miss
+Input: 233 | Data: 14 -> Cache Block 8 | Hit
+Input: 234 | Data: 15 -> Cache Block 9 | Hit
+Input: 235 | Data: 16 -> Cache Block 31 | Hit
+Input: 236 | Data: 17 -> Cache Block 5 | Miss
+Input: 237 | Data: 18 -> Cache Block 18 | Hit
+Input: 238 | Data: 19 -> Cache Block 22 | Miss
+Input: 239 | Data: 20 -> Cache Block 11 | Miss
+Input: 240 | Data: 21 -> Cache Block 22 | Miss
+Input: 241 | Data: 22 -> Cache Block 22 | Miss
+Input: 242 | Data: 23 -> Cache Block 13 | Hit
+Input: 243 | Data: 24 -> Cache Block 23 | Hit
+Input: 244 | Data: 25 -> Cache Block 18 | Miss
+Input: 245 | Data: 26 -> Cache Block 19 | Hit
+Input: 246 | Data: 27 -> Cache Block 7 | Hit
+Input: 247 | Data: 28 -> Cache Block 15 | Miss
+Input: 248 | Data: 29 -> Cache Block 14 | Miss
+Input: 249 | Data: 30 -> Cache Block 30 | Hit
+Input: 250 | Data: 31 -> Cache Block 22 | Miss
+Input: 251 | Data: 32 -> Cache Block 18 | Miss
+Input: 252 | Data: 33 -> Cache Block 29 | Miss
+Input: 253 | Data: 34 -> Cache Block 26 | Hit
+Input: 254 | Data: 35 -> Cache Block 7 | Miss
+Input: 255 | Data: 36 -> Cache Block 28 | Miss
+Input: 256 | Data: 37 -> Cache Block 19 | Miss
+Input: 257 | Data: 38 -> Cache Block 0 | Hit
+Input: 258 | Data: 39 -> Cache Block 17 | Miss
+Input: 259 | Data: 40 -> Cache Block 30 | Miss
+Input: 260 | Data: 41 -> Cache Block 7 | Miss
+Input: 261 | Data: 42 -> Cache Block 3 | Miss
+Input: 262 | Data: 43 -> Cache Block 2 | Miss
+Input: 263 | Data: 44 -> Cache Block 1 | Miss
+Input: 264 | Data: 45 -> Cache Block 16 | Miss
+Input: 265 | Data: 46 -> Cache Block 13 | Miss
+Input: 266 | Data: 47 -> Cache Block 19 | Miss
+Input: 267 | Data: 48 -> Cache Block 2 | Miss
+Input: 268 | Data: 49 -> Cache Block 11 | Miss
+Input: 269 | Data: 50 -> Cache Block 26 | Miss
+Input: 270 | Data: 51 -> Cache Block 17 | Miss
+Input: 271 | Data: 52 -> Cache Block 8 | Miss
+Input: 272 | Data: 53 -> Cache Block 26 | Miss
+Input: 273 | Data: 54 -> Cache Block 14 | Miss
+Input: 274 | Data: 55 -> Cache Block 12 | Miss
+Input: 275 | Data: 56 -> Cache Block 8 | Miss
+Input: 276 | Data: 57 -> Cache Block 28 | Miss
+Input: 277 | Data: 58 -> Cache Block 10 | Miss
+Input: 278 | Data: 59 -> Cache Block 25 | Miss
+Input: 279 | Data: 60 -> Cache Block 13 | Miss
+Input: 280 | Data: 61 -> Cache Block 0 | Miss
+Input: 281 | Data: 62 -> Cache Block 5 | Miss
+Input: 282 | Data: 63 -> Cache Block 2 | Miss
+Input: 283 | Data: 0 -> Cache Block 26 | Miss
+Input: 284 | Data: 1 -> Cache Block 22 | Miss
+Input: 285 | Data: 2 -> Cache Block 4 | Hit
+Input: 286 | Data: 3 -> Cache Block 30 | Miss
+Input: 287 | Data: 4 -> Cache Block 29 | Miss
+Input: 288 | Data: 5 -> Cache Block 26 | Miss
+Input: 289 | Data: 6 -> Cache Block 5 | Miss
+Input: 290 | Data: 7 -> Cache Block 20 | Hit
+Input: 291 | Data: 8 -> Cache Block 24 | Hit
+Input: 292 | Data: 9 -> Cache Block 6 | Hit
+Input: 293 | Data: 10 -> Cache Block 27 | Hit
+Input: 294 | Data: 11 -> Cache Block 14 | Miss
+Input: 295 | Data: 12 -> Cache Block 24 | Miss
+Input: 296 | Data: 13 -> Cache Block 21 | Hit
+Input: 297 | Data: 14 -> Cache Block 13 | Miss
+Input: 298 | Data: 15 -> Cache Block 9 | Hit
+Input: 299 | Data: 16 -> Cache Block 31 | Hit
+Input: 300 | Data: 17 -> Cache Block 13 | Miss
+Input: 301 | Data: 18 -> Cache Block 18 | Miss
+Input: 302 | Data: 19 -> Cache Block 7 | Miss
+Input: 303 | Data: 20 -> Cache Block 26 | Miss
+Input: 304 | Data: 21 -> Cache Block 15 | Miss
+Input: 305 | Data: 22 -> Cache Block 25 | Miss
+Input: 306 | Data: 23 -> Cache Block 7 | Miss
+Input: 307 | Data: 24 -> Cache Block 23 | Hit
+Input: 308 | Data: 25 -> Cache Block 9 | Miss
+Input: 309 | Data: 26 -> Cache Block 29 | Miss
+Input: 310 | Data: 27 -> Cache Block 28 | Miss
+Input: 311 | Data: 28 -> Cache Block 1 | Miss
+Input: 312 | Data: 29 -> Cache Block 12 | Miss
+Input: 313 | Data: 30 -> Cache Block 4 | Miss
+Input: 314 | Data: 1 -> Cache Block 22 | Hit
+Input: 315 | Data: 2 -> Cache Block 19 | Miss
+Input: 316 | Data: 3 -> Cache Block 30 | Hit
+Input: 317 | Data: 4 -> Cache Block 1 | Miss
+Input: 318 | Data: 5 -> Cache Block 28 | Miss
+Input: 319 | Data: 6 -> Cache Block 5 | Hit
+Input: 320 | Data: 7 -> Cache Block 20 | Hit
+Input: 321 | Data: 8 -> Cache Block 3 | Miss
+Input: 322 | Data: 9 -> Cache Block 6 | Hit
+Input: 323 | Data: 10 -> Cache Block 27 | Hit
+Input: 324 | Data: 11 -> Cache Block 14 | Hit
+Input: 325 | Data: 12 -> Cache Block 24 | Hit
+Input: 326 | Data: 13 -> Cache Block 21 | Hit
+Input: 327 | Data: 14 -> Cache Block 6 | Miss
+Input: 328 | Data: 15 -> Cache Block 26 | Miss
+Input: 329 | Data: 16 -> Cache Block 31 | Hit
+Input: 330 | Data: 17 -> Cache Block 13 | Hit
+Input: 331 | Data: 18 -> Cache Block 18 | Hit
+Input: 332 | Data: 19 -> Cache Block 15 | Miss
+Input: 333 | Data: 20 -> Cache Block 17 | Miss
+Input: 334 | Data: 21 -> Cache Block 23 | Miss
+Input: 335 | Data: 22 -> Cache Block 25 | Hit
+Input: 336 | Data: 23 -> Cache Block 7 | Hit
+Input: 337 | Data: 24 -> Cache Block 9 | Miss
+Input: 338 | Data: 25 -> Cache Block 4 | Miss
+Input: 339 | Data: 26 -> Cache Block 29 | Hit
+Input: 340 | Data: 27 -> Cache Block 1 | Miss
+Input: 341 | Data: 28 -> Cache Block 31 | Miss
+Input: 342 | Data: 29 -> Cache Block 12 | Hit
+Input: 343 | Data: 30 -> Cache Block 3 | Miss
+Input: 344 | Data: 31 -> Cache Block 14 | Miss
+Input: 345 | Data: 32 -> Cache Block 21 | Miss
+Input: 346 | Data: 33 -> Cache Block 20 | Miss
+Input: 347 | Data: 34 -> Cache Block 28 | Miss
+Input: 348 | Data: 35 -> Cache Block 3 | Miss
+Input: 349 | Data: 36 -> Cache Block 25 | Miss
+Input: 350 | Data: 37 -> Cache Block 30 | Miss
+Input: 351 | Data: 38 -> Cache Block 0 | Miss
+Input: 352 | Data: 39 -> Cache Block 20 | Miss
+Input: 353 | Data: 40 -> Cache Block 18 | Miss
+Input: 354 | Data: 41 -> Cache Block 23 | Miss
+Input: 355 | Data: 42 -> Cache Block 31 | Miss
+Input: 356 | Data: 43 -> Cache Block 10 | Miss
+Input: 357 | Data: 44 -> Cache Block 25 | Miss
+Input: 358 | Data: 45 -> Cache Block 16 | Hit
+Input: 359 | Data: 46 -> Cache Block 20 | Miss
+Input: 360 | Data: 47 -> Cache Block 15 | Miss
+Input: 361 | Data: 48 -> Cache Block 12 | Miss
+Input: 362 | Data: 49 -> Cache Block 11 | Hit
+Input: 363 | Data: 50 -> Cache Block 9 | Miss
+Input: 364 | Data: 51 -> Cache Block 19 | Miss
+Input: 365 | Data: 52 -> Cache Block 17 | Miss
+Input: 366 | Data: 53 -> Cache Block 23 | Miss
+Input: 367 | Data: 54 -> Cache Block 24 | Miss
+Input: 368 | Data: 55 -> Cache Block 9 | Miss
+Input: 369 | Data: 56 -> Cache Block 8 | Hit
+Input: 370 | Data: 57 -> Cache Block 22 | Miss
+Input: 371 | Data: 58 -> Cache Block 19 | Miss
+Input: 372 | Data: 59 -> Cache Block 5 | Miss
+Input: 373 | Data: 60 -> Cache Block 28 | Miss
+Input: 374 | Data: 61 -> Cache Block 8 | Miss
+Input: 375 | Data: 62 -> Cache Block 6 | Miss
+Input: 376 | Data: 63 -> Cache Block 2 | Hit
