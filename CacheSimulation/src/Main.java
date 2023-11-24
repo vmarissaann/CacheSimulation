@@ -147,6 +147,8 @@ public class Main {
             mainMemory.nArray[num].cHit = "Miss";
         }
 
+        mainMemory.nArray[num].cacheBlockOccupied = nReplace;
+
         // Increment the current counter
         mainMemory.nCurr++;
         // Return the cache location
@@ -180,8 +182,9 @@ public class Main {
             System.out.println();
 
             System.out.println("Input Sequence and hit/misses");
+            System.out.println("Data -> Cache Block");
             for(int i=0; i<mainMemory.nArray.length; i++){
-                System.out.println("Input " + (i+1) + ": " + mainMemory.nArray[i].nNum + " | " + mainMemory.nArray[i].cHit);
+                System.out.println("Input: " + (i+1) + " | Data: " + mainMemory.nArray[i].nNum + " -> Cache Block "+ mainMemory.nArray[i].cacheBlockOccupied + " | " + mainMemory.nArray[i].cHit);
             }
 
 

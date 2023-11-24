@@ -33,6 +33,8 @@ class Block
 {
     public int nNum = 0;
     public String cHit = "";
+    
+    public int cacheBlockOccupied = -1;
     // Assigns the value of nNum (passed to the constructor) to the nNum variable within the Block object.
     public Block(int nNum)
     {
